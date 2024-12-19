@@ -1,13 +1,63 @@
 <template>
   <Navbar />
-
   <div class="page-wrapper">
     <div class="content">
       <div class="page-header">
         <div class="add-item d-flex">
           <div class="page-title">
-            <h4>Edit Product</h4>
-            <h6>Edit new product</h6>
+            <h4>New Product</h4>
+            <h6>Create new product</h6>
+          </div>
+        </div>
+        <ul class="table-top-head">
+          <li>
+            <div class="page-btn">
+              <router-link to="products" class="btn btn-secondary"
+                ><i data-feather="arrow-left" class="me-2"></i>Back to
+                Product</router-link
+              >
+            </div>
+          </li>
+          <li>
+            <a
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Collapse"
+              id="collapse-header"
+              ><i data-feather="chevron-up" class="feather-chevron-up"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-12">
+          <div class="mb-3 add-product text-center">
+            <!-- Show/hide barcode and error messages -->
+            <div
+              v-show="
+                inputedProduct.sku.length === 13 ||
+                inputedProduct.sku.length === 0
+              "
+            >
+              <!-- Error Message for invalid SKU -->
+              <div
+                v-if="
+                  inputedProduct.sku.length !== 13 &&
+                  inputedProduct.sku.length > 0
+                "
+                class="text-danger"
+              >
+                SKU must be exactly 13 digits.
+              </div>
+
+              <!-- Barcode rendering -->
+              <Barcode
+                v-if="inputedProduct.sku.length === 13"
+                ref="barcodeRef"
+                :sku="inputedProduct.sku"
+                :productName="inputedProduct.name"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -47,6 +97,71 @@
                     <div class="row">
                       <div class="col-lg-5 col-sm-6 col-12">
                         <div class="mb-3 add-product">
+                          <label class="form-label">Status</label>
+                          <div
+                            class="status-toggle modal-status d-flex justify-content-between"
+                          >
+                            <span class="form-label">{{
+                              inputedProduct.status
+                            }}</span>
+                            <input
+                              type="checkbox"
+                              id="user4"
+                              class="check"
+                              :checked="inputedProduct.status === 'active'"
+                              @change="toggleStatus"
+                            />
+                            <label for="user4" class="checktoggle"></label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="input-blocks add-product list">
+                          <label
+                            data-bs-toggle="tooltip"
+                            title="Note: it must be 13 numbers"
+                            >SKU
+                            <i
+                              class="mb-1"
+                              data-feather="help-circle"
+                              style="height: 15px"
+                            ></i>
+                          </label>
+                          <input
+                            type="text"
+                            id="sku"
+                            class="form-control list"
+                            placeholder="Enter SKU manually"
+                            :maxlength="13"
+                            v-model="inputedProduct.sku"
+                            @input="
+                              inputedProduct.sku = filterNumInput(
+                                $event.target.value
+                              )
+                            "
+                            :class="{
+                              'is-invalid':
+                                inputedProduct.sku.length !== 13 &&
+                                inputedProduct.sku.length > 0,
+                            }"
+                            required
+                          />
+                          <p class="mt-1 text-danger">{{ skuError }}</p>
+                          <div class="d-flex align-items-center mt-2">
+                            <button
+                              type="button"
+                              class="btn btn-primaryadd"
+                              @click="autoGenerateSKU"
+                            >
+                              Auto Generate
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="mb-3 add-product">
                           <label class="form-label">Product Name</label>
                           <input
                             type="text"
@@ -67,7 +182,19 @@
                       <div class="row">
                         <div class="col-lg-4 col-sm-6 col-12">
                           <div class="mb-3 add-product">
-                            <label class="form-label">Category</label>
+                            <div class="add-newplus">
+                              <label class="form-label">Category</label>
+                              <a
+                                href="javascript:void(0);"
+                                data-bs-toggle="modal"
+                                data-bs-target="#add-units-category"
+                                ><i
+                                  data-feather="plus-circle"
+                                  class="plus-down-add"
+                                ></i
+                                ><span>Add New</span></a
+                              >
+                            </div>
                             <select
                               class="form-control"
                               v-model="inputedProduct.category"
@@ -531,7 +658,7 @@ export default {
       discountType: "",
       manufacturedDate: "",
       expiryDate: "",
-      status: "active",
+      status: "",
       image: { file: null, url: null },
       url: "",
     });
