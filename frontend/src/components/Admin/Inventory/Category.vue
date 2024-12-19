@@ -5,7 +5,6 @@
       <div class="page-header">
         <div class="add-item d-flex">
           <div class="page-title">
-            <h4>Category</h4>
             <h6>Manage your categories</h6>
           </div>
         </div>

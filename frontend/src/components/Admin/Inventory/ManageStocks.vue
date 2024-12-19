@@ -5,25 +5,8 @@
     <div class="content">
       <div class="page-header">
         <div class="page-title me-auto">
-          <h4>Manage Stocks</h4>
+          <h6>Manage your Stocks</h6>
         </div>
-        <ul class="table-top-head low-stock-top-head">
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"
-              ><img src="/assets/img/icons/pdf.svg" alt="img"
-            /></a>
-          </li>
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"
-              ><img src="/assets/img/icons/excel.svg" alt="img"
-            /></a>
-          </li>
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh"
-              ><i data-feather="rotate-ccw" class="feather-rotate-ccw"></i
-            ></a>
-          </li>
-        </ul>
       </div>
       <div class="table-tab">
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -54,7 +37,6 @@
               <div class="card-body">
                 <ClipLoader v-if="loading" />
                 <ClipLoader v-if="loadingStates[activeTab]" />
-
                 <div class="table-responsive" v-show="activeTab === 'history'">
                   <table id="history-table" class="table">
                     <thead>
@@ -77,7 +59,6 @@
                     </tbody>
                   </table>
                 </div>
-
                 <div class="table-responsive" v-show="activeTab !== 'history'">
                   <table id="other-table" class="table">
                     <thead>
@@ -86,8 +67,8 @@
                         <th>Category</th>
                         <th>Created On</th>
                         <th>Last Restock</th>
-                        <th>Qty</th>
-                        <th>Qty Alert</th>
+                        <th>Quantity</th>
+                        <th>Stock Alert</th>
                         <th class="no-sort">Modify</th>
                       </tr>
                     </thead>
@@ -149,10 +130,9 @@
             <div v-if="editProductData" class="modal-body custom-modal-body">
               <form @submit.prevent="editStock">
                 <input type="hidden" input="" />
-                <p>Product SKU: {{ editProductData.sku }}</p>
                 <p>Note: use (-) to deduct stock, e.g., -5</p>
                 <div class="mb-3">
-                  <label class="form-label">Qty</label>
+                  <label class="form-label">Add Quantity +</label>
                   <input
                     type="number"
                     v-model="entryValue"
@@ -162,7 +142,7 @@
                   />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Qty Alert</label>
+                  <label class="form-label">Quantity Threshold Alert</label>
                   <input
                     type="number"
                     v-model="newQuantityAlert"

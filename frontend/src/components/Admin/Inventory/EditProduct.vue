@@ -5,8 +5,7 @@
       <div class="page-header">
         <div class="add-item d-flex">
           <div class="page-title">
-            <h4>New Product</h4>
-            <h6>Create new product</h6>
+            <h6>Edit product</h6>
           </div>
         </div>
       </div>
@@ -27,12 +26,6 @@
                         <i data-feather="info" class="add-info"></i
                         ><span>Product Information</span>
                       </h5>
-                      <a href="javascript:void(0);"
-                        ><i
-                          data-feather="chevron-down"
-                          class="chevron-down-add"
-                        ></i
-                      ></a>
                     </div>
                   </div>
                 </div>
@@ -127,12 +120,6 @@
                           <i data-feather="life-buoy" class="add-info"></i
                           ><span>Product Pricing</span>
                         </h5>
-                        <a href="javascript:void(0);"
-                          ><i
-                            data-feather="chevron-down"
-                            class="chevron-down-add"
-                          ></i
-                        ></a>
                       </div>
                     </div>
                   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="main-wrapper">
     <div class="header">
-      <div class="header-left active">
+      <div class="header-left active" style="border-right: none">
         <a href="#" class="logo logo-normal">
           <img src="assets/img/logo.png" alt />
         </a>
@@ -30,12 +30,6 @@
           </a>
           <div class="dropdown-menu menu-drop-user">
             <div class="profilename">
-              <div class="profileset">
-                <div class="profilesets">
-                  <h6>{{ user }}</h6>
-                  <h5>{{ role }}</h5>
-                </div>
-              </div>
               <a class="dropdown-item logout pb-0" href="#" @click="logout"
                 ><img
                   src="assets/img/icons/log-out.svg"
@@ -63,8 +57,8 @@
       </div>
     </div>
     <div class="sidebar" id="sidebar">
-      <div class="sidebar-inner slimscroll">
-        <div id="sidebar-menu" class="sidebar-menu">
+      <div class="sidebar-inner">
+        <div class="sidebar-menu">
           <ul>
             <li class="submenu-open">
               <h6 class="submenu-hdr">Main</h6>
@@ -201,27 +195,10 @@ export default {
   setup() {
     const imageURL = process.env.VUE_APP_IMAGE_URL;
     const apiURL = process.env.VUE_APP_URL;
-    const isFullScreen = ref(false);
     const user = localStorage.getItem("user");
     const role = localStorage.getItem("role");
     const image = localStorage.getItem("image");
     const router = useRouter();
-
-    const toggleFullScreen = async () => {
-      try {
-        if (!document.fullscreenElement) {
-          await document.documentElement.requestFullscreen();
-          isFullScreen.value = true;
-        } else {
-          await document.exitFullscreen();
-          isFullScreen.value = false;
-        }
-      } catch (err) {
-        console.error(
-          `Error attempting to change fullscreen mode: ${err.message}`
-        );
-      }
-    };
 
     const logout = () => {
       Swal.fire({
@@ -273,8 +250,6 @@ export default {
     });
 
     return {
-      isFullScreen,
-      toggleFullScreen,
       user,
       logout,
       role,
@@ -284,23 +259,79 @@ export default {
   },
 };
 </script>
+
 <style scoped>
+.header {
+  background-color: #0bbf64 !important;
+  color: white !important;
+}
+.header span {
+  color: white !important;
+}
 .sidebar {
   overflow-y: auto;
   max-height: 100vh;
+  max-width: 15vw;
+  background-color: #0bbf64 !important;
+  transition: background-color 0.3s ease;
 }
-
+.sidebar h6 {
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+}
 .active-link {
-  background-color: #80bd8e;
+  background-color: #2c9a52;
   font-weight: bold;
   padding: 1rem !important;
-}
-
-.active-link i {
-  color: #fff !important;
+  min-width: 11vw;
+  color: #f5f5f5 !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .active-link:hover {
+  background-color: #248c47;
+}
+
+.active-link span {
   color: #f5f5f5 !important;
+}
+
+.sidebar-menu a:hover {
+  background-color: #248c47;
+  color: #fff !important;
+}
+
+.sidebar .user-info:hover {
+  color: #f5f5f5 !important; /* Ensure the user's name color is clear during hover */
+}
+
+.sidebar-menu i {
+  color: #f5f5f5 !important;
+}
+.sidebar-menu span {
+  color: #f5f5f5 !important;
+}
+
+.sidebar-menu a {
+  color: #f5f5f5 !important;
+  transition: color 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+  color: #fff; /* Link color change on hover */
+}
+
+/* Hover effect for sidebar links */
+.sidebar-menu i:hover {
+  color: #fff !important;
+}
+
+.navbar-active {
+  color: #fff !important;
+}
+
+.sidebar-menu .active-link i,
+.sidebar-menu .active-link span {
+  color: #f5f5f5;
 }
 </style>
