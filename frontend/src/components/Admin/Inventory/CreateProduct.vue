@@ -5,7 +5,7 @@
       <div class="page-header">
         <div class="add-item d-flex">
           <div class="page-title">
-            <h6>Add product +</h6>
+            <h6>Create product +</h6>
           </div>
         </div>
       </div>
