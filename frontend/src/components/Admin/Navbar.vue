@@ -4,7 +4,7 @@
     <div class="header">
       <div class="header-left active">
         <a href="#" class="logo logo-normal">
-          <img src="assets/img/logo.png" alt />
+          <img src="img/logo.png" alt />
         </a>
         <a href="index.html" class="logo logo-white">
           <img src="assets/img/logo-white.png" alt />

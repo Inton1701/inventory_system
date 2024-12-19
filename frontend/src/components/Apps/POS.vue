@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-between align-items-center">
       <!-- Logo / Title -->
       <div class="logo">
-      <img src="assets/img/logo.png" alt="POSExpress"     class="img-fluid "
+      <img src="img/logo.png" alt="Gulay"     class="img-fluid "
       style="width: 200px; height: 60px;" />
     </div>
 
