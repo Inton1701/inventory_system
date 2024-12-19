@@ -2,6 +2,13 @@
   <Navbar />
   <div class="page-wrapper">
     <div class="content">
+      <div class="page-header">
+        <div class="add-item d-flex">
+          <div class="page-title">
+            <h6>Add product +</h6>
+          </div>
+        </div>
+      </div>
       <form @submit.prevent="addProduct">
         <div class="card">
           <div class="card-body add-product pb-0">
