@@ -1,20 +1,10 @@
 <template>
-
   <div class="main-wrapper">
     <div class="header">
       <div class="header-left active">
         <a href="#" class="logo logo-normal">
-          <img src="img/logo.png" alt />
-        </a>
-        <a href="index.html" class="logo logo-white">
-          <img src="assets/img/logo-white.png" alt />
-        </a>
-        <a href="index.html" class="logo-small">
-          <img src="assets/img/logo-small.png" alt />
-        </a>
-        <a id="toggle_btn" href="javascript:void(0);">
-          <i data-feather="chevrons-left" class="feather-16"></i>
-        </a>
+          <img src="assets/img/logo.png" alt />
+        </a>       
       </div>
       <a id="mobile_btn" class="mobile_btn" href="#sidebar">
         <span class="bar-icon">
@@ -24,97 +14,49 @@
         </span>
       </a>
       <ul class="nav user-menu">
-        <li class="nav-item nav-searchinputs">
-
-        </li>
-        <li class="nav-item nav-item-box">
-          <a href="#" type="button" @click="toggleFullScreen" id="btnFullscreen">
-
-            <font-awesome-icon v-if="!isFullScreen" icon="expand" style="color: #56c49b;" />
-
-          </a>
-        </li>
-        <li class="nav-item dropdown nav-item-box">
-          <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-            <i data-feather="bell"></i><span class="badge rounded-pill">2</span>
-          </a>
-          <div class="dropdown-menu notifications">
-            <div class="topnav-dropdown-header">
-              <span class="notification-title">Notifications</span>
-              <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-            </div>
-            <div class="noti-content">
-              <ul class="notification-list">
-                <li class="notification-message">
-                  <a href="activities.html">
-                    <div class="media d-flex">
-                      <span class="avatar flex-shrink-0">
-                        <img alt src="assets/img/profiles/avatar-13.jpg" />
-                      </span>
-                      <div class="media-body flex-grow-1">
-                        <p class="noti-details">
-                          <span class="noti-title">Bernardo Galaviz</span>
-                          added new task
-                          <span class="noti-title">Private chat module</span>
-                        </p>
-                        <p class="noti-time">
-                          <span class="notification-time">2 days ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="topnav-dropdown-footer">
-              <a href="activities.html">View all Notifications</a>
-            </div>
-          </div>
-        </li>
-
-        <li class="nav-item nav-item-box">
-          <router-link to="/settings" ><i data-feather="settings"></i></router-link>
-        </li>
+        <li class="nav-item nav-searchinputs"></li>
         <li class="nav-item dropdown has-arrow main-drop">
-          <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+          <a
+            href="javascript:void(0);"
+            class="dropdown-toggle nav-link userset"
+            data-bs-toggle="dropdown"
+          >
             <span class="user-info">
-              <span class="user-letter">
-                <img :src="image ? `${imageURL}${image}` : '/img/icons/no-image-icon.png'" alt="User image" class="img-fluid" />
-
-              </span>
               <span class="user-detail">
                 <span class="user-name">{{ user }}</span>
-                <span class="user-role">{{  role }}</span>
+                <span class="user-role">{{ role }}</span>
               </span>
             </span>
           </a>
           <div class="dropdown-menu menu-drop-user">
             <div class="profilename">
               <div class="profileset">
-                <span class="user-img">   <img :src="image ? `${imageURL}${image}` : '/img/icons/no-image-icon.png'" alt="User image" class="img-fluid" />
-                  <span class="status online"></span></span>
                 <div class="profilesets">
                   <h6>{{ user }}</h6>
-                  <h5>{{  role }}</h5>
+                  <h5>{{ role }}</h5>
                 </div>
               </div>
-              <hr class="m-0" />
-           
-              <router-link class="dropdown-item" to="/settings"><i class="me-2"
-                  data-feather="settings"></i>Settings</router-link>
-              <hr class="m-0" />
-              <a class="dropdown-item logout pb-0" href="#"  @click="logout"><img src="assets/img/icons/log-out.svg"
-                  class="me-2" alt="img" />Logout</a>
+              <a class="dropdown-item logout pb-0" href="#" @click="logout"
+                ><img
+                  src="assets/img/icons/log-out.svg"
+                  class="me-2"
+                  alt="img"
+                />Logout</a
+              >
             </div>
           </div>
         </li>
       </ul>
 
       <div class="dropdown mobile-user-menu">
-        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+        <a
+          href="javascript:void(0);"
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          ><i class="fa fa-ellipsis-v"></i
+        ></a>
         <div class="dropdown-menu dropdown-menu-right">
-
           <a class="dropdown-item" href="general-settings.html">Settings</a>
           <a class="dropdown-item" href="/">Logout</a>
         </div>
@@ -129,7 +71,10 @@
               <ul>
                 <ul>
                   <li>
-                    <router-link to="/dashboard"><i data-feather="grid"></i><span>Admin Dashboard</span></router-link>
+                    <router-link to="/dashboard"
+                      ><i data-feather="grid"></i
+                      ><span>Admin Dashboard</span></router-link
+                    >
                   </li>
                 </ul>
               </ul>
@@ -138,106 +83,99 @@
               <h6 class="submenu-hdr">Inventory</h6>
               <ul>
                 <li>
-                  <router-link to="/products"><i data-feather="box"></i><span>Products</span></router-link>
+                  <router-link to="/products"
+                    ><i data-feather="box"></i
+                    ><span>Products</span></router-link
+                  >
                 </li>
                 <li>
-                  <router-link to="/create-product"><i data-feather="plus-square"></i><span>Create
-                      Product</span></router-link>
+                  <router-link to="/create-product"
+                    ><i data-feather="plus-square"></i
+                    ><span>Create Product</span></router-link
+                  >
                 </li>
 
                 <li>
-                  <router-link to="/manage-stocks"><i data-feather="package"></i><span>Manage Stock</span></router-link>
+                  <router-link to="/manage-stocks"
+                    ><i data-feather="package"></i
+                    ><span>Manage Stock</span></router-link
+                  >
                 </li>
                 <li>
-                  <router-link to="/category"><i data-feather="codepen"></i><span>Category</span></router-link>
+                  <router-link to="/category"
+                    ><i data-feather="codepen"></i
+                    ><span>Category</span></router-link
+                  >
                 </li>
-
-                <li>
-                  <router-link to="/brands"><i data-feather="tag"></i><span>Brands</span></router-link>
-                </li>
-                <li>
-                  <router-link to="/units"><i data-feather="speaker"></i><span>Units</span></router-link>
-                </li>
-
               </ul>
             </li>
-      
+
             <li class="submenu-open">
               <h6 class="submenu-hdr">Sales</h6>
               <ul>
-
                 <li>
-                  <router-link to="transactions"><i data-feather="file-text"></i><span>Transactions</span></router-link>
+                  <router-link to="transactions"
+                    ><i data-feather="file-text"></i
+                    ><span>Transactions</span></router-link
+                  >
                 </li>
                 <li>
-                  <a href="returns"><i data-feather="copy"></i><span>Sales Return</span></a>
+                  <a href="returns"
+                    ><i data-feather="copy"></i><span>Sales Return</span></a
+                  >
                 </li>
                 <li>
-                  <a href="voids"><i data-feather="alert-octagon"></i><span>Voids</span></a>
+                  <a href="voids"
+                    ><i data-feather="alert-octagon"></i><span>Voids</span></a
+                  >
                 </li>
                 <li>
-                  <a href="pos"><i data-feather="hard-drive"></i><span>POS</span></a>
-                </li>
-              </ul>
-            </li>
-            <li class="submenu-open">
-              <h6 class="submenu-hdr">Promo</h6>
-              <ul>
-                <li>
-                  <a href="coupons"><i data-feather="shopping-cart"></i><span>Coupons</span></a>
+                  <a href="pos"
+                    ><i data-feather="hard-drive"></i><span>POS</span></a
+                  >
                 </li>
               </ul>
             </li>
             <li class="submenu-open">
               <h6 class="submenu-hdr">Peoples</h6>
               <ul>
-                <li>
-                  <router-link to="customers"><i data-feather="user"></i><span>Customers</span></router-link>
-                </li>
-                <li>
-                  <router-link to="staffs"><i data-feather="users"></i><span>Staffs</span></router-link>
+                <li> 
+                  <li>
+                    </li>
+                    <router-link to="staffs">
+                    <i data-feather="users">
+                    </i><span>Staffs</span></router-link>
                 </li>
               </ul>
             </li>
-
-
-
             <li class="submenu-open">
               <h6 class="submenu-hdr">Settings</h6>
               <ul>
-                <li class="submenu">
-                  <router-link to="/settings"><i data-feather="settings"></i><span>Settings</span></router-link>
-      
-                </li>
-
-
                 <li>
-                  <a href="#" @click="logout"><i data-feather="log-out"></i><span>Logout</span>
+                  <a href="#" @click="logout"
+                    ><i data-feather="log-out"></i><span>Logout</span>
                   </a>
                 </li>
               </ul>
             </li>
-
           </ul>
         </div>
       </div>
     </div>
   </div>
-
-
 </template>
 <script>
-import { ref, onMounted, nextTick } from 'vue';
-import feather from 'feather-icons';
-import { useRouter } from 'vue-router';
-import axios from 'axios';
+import { ref, onMounted, nextTick } from "vue";
+import feather from "feather-icons";
+import { useRouter } from "vue-router";
+import axios from "axios";
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   setup() {
     const imageURL = process.env.VUE_APP_IMAGE_URL;
     const apiURL = process.env.VUE_APP_URL;
     const isFullScreen = ref(false);
-    const user = localStorage.getItem("user"); 
+    const user = localStorage.getItem("user");
     const role = localStorage.getItem("role");
     const image = localStorage.getItem("image");
     const router = useRouter();
@@ -245,67 +183,60 @@ export default {
     const toggleFullScreen = async () => {
       try {
         if (!document.fullscreenElement) {
-
           await document.documentElement.requestFullscreen();
           isFullScreen.value = true;
-
         } else {
           await document.exitFullscreen();
           isFullScreen.value = false;
         }
-
-
-
-
-
       } catch (err) {
-        console.error(`Error attempting to change fullscreen mode: ${err.message}`);
+        console.error(
+          `Error attempting to change fullscreen mode: ${err.message}`
+        );
       }
     };
 
-    const logout =  () =>{
+    const logout = () => {
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You will be logged out of your account.",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonText: 'Yes, logout!',
-        cancelButtonText: 'Cancel'
-      }).then( async(result) => {
+        confirmButtonText: "Yes, logout!",
+        cancelButtonText: "Cancel",
+      }).then(async (result) => {
         if (result.isConfirmed) {
-          try{
-            const userId = localStorage.getItem('id');
-          const response = await axios.patch(`${apiURL}/logout/${userId}`)
-          if(response.data.success) {
-          // Clear local storage
-          localStorage.removeItem('token');
-          localStorage.removeItem('role');
-          localStorage.removeItem('id');
-          localStorage.removeItem('user');
-          localStorage.removeItem('emails');
-          localStorage.removeItem('image');
-          // Redirect to home
-          router.push('/');
-          
-          Swal.fire(
-            'Logged Out',
-            'You have been successfully logged out.',
-            'success'
-          );
-          }else{
-            Swal.fire(
-            'Logged Out',
-            'An error occurred during logout',
-            'error'
-          );
-          router.push('/');
-          }
+          try {
+            const userId = localStorage.getItem("id");
+            const response = await axios.patch(`${apiURL}/logout/${userId}`);
+            if (response.data.success) {
+              // Clear local storage
+              localStorage.removeItem("token");
+              localStorage.removeItem("role");
+              localStorage.removeItem("id");
+              localStorage.removeItem("user");
+              localStorage.removeItem("emails");
+              localStorage.removeItem("image");
+              // Redirect to home
+              router.push("/");
 
-          }catch(error){
-            Swal.fire('Error','An error occurred during logout','error'); 
+              Swal.fire(
+                "Logged Out",
+                "You have been successfully logged out.",
+                "success"
+              );
+            } else {
+              Swal.fire(
+                "Logged Out",
+                "An error occurred during logout",
+                "error"
+              );
+              router.push("/");
+            }
+          } catch (error) {
+            Swal.fire("Error", "An error occurred during logout", "error");
             console.log(error);
           }
-         
         }
       });
     };
@@ -322,9 +253,8 @@ export default {
       role,
       imageURL,
       image,
-
     };
-  }
+  },
 };
 </script>
 <style scoped>
