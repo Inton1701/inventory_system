@@ -4,16 +4,7 @@
       <div class="header-left active">
         <a href="#" class="logo logo-normal">
           <img src="assets/img/logo.png" alt />
-        </a>
-        <a href="index.html" class="logo logo-white">
-          <img src="assets/img/logo.png" alt />
-        </a>
-        <a href="index.html" class="logo-small">
-          <img src="assets/img/logo.png" alt />
-        </a>
-        <a id="toggle_btn" href="javascript:void(0);">
-          <i data-feather="chevrons-left" class="feather-16"></i>
-        </a>
+        </a>       
       </div>
       <a id="mobile_btn" class="mobile_btn" href="#sidebar">
         <span class="bar-icon">
@@ -24,67 +15,6 @@
       </a>
       <ul class="nav user-menu">
         <li class="nav-item nav-searchinputs"></li>
-        <li class="nav-item nav-item-box">
-          <a
-            href="#"
-            type="button"
-            @click="toggleFullScreen"
-            id="btnFullscreen"
-          >
-            <font-awesome-icon
-              v-if="!isFullScreen"
-              icon="expand"
-              style="color: #56c49b"
-            />
-          </a>
-        </li>
-        <li class="nav-item dropdown nav-item-box">
-          <a
-            href="javascript:void(0);"
-            class="dropdown-toggle nav-link"
-            data-bs-toggle="dropdown"
-          >
-            <i data-feather="bell"></i><span class="badge rounded-pill">2</span>
-          </a>
-          <div class="dropdown-menu notifications">
-            <div class="topnav-dropdown-header">
-              <span class="notification-title">Notifications</span>
-              <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-            </div>
-            <div class="noti-content">
-              <ul class="notification-list">
-                <li class="notification-message">
-                  <a href="activities.html">
-                    <div class="media d-flex">
-                      <span class="avatar flex-shrink-0">
-                        <img alt src="assets/img/profiles/avatar-13.jpg" />
-                      </span>
-                      <div class="media-body flex-grow-1">
-                        <p class="noti-details">
-                          <span class="noti-title">Bernardo Galaviz</span>
-                          added new task
-                          <span class="noti-title">Private chat module</span>
-                        </p>
-                        <p class="noti-time">
-                          <span class="notification-time">2 days ago</span>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="topnav-dropdown-footer">
-              <a href="activities.html">View all Notifications</a>
-            </div>
-          </div>
-        </li>
-
-        <li class="nav-item nav-item-box">
-          <router-link to="/settings"
-            ><i data-feather="settings"></i
-          ></router-link>
-        </li>
         <li class="nav-item dropdown has-arrow main-drop">
           <a
             href="javascript:void(0);"
@@ -92,17 +22,6 @@
             data-bs-toggle="dropdown"
           >
             <span class="user-info">
-              <span class="user-letter">
-                <img
-                  :src="
-                    image
-                      ? `${imageURL}${image}`
-                      : '/img/icons/no-image-icon.png'
-                  "
-                  alt="User image"
-                  class="img-fluid"
-                />
-              </span>
               <span class="user-detail">
                 <span class="user-name">{{ user }}</span>
                 <span class="user-role">{{ role }}</span>
@@ -112,29 +31,11 @@
           <div class="dropdown-menu menu-drop-user">
             <div class="profilename">
               <div class="profileset">
-                <span class="user-img">
-                  <img
-                    :src="
-                      image
-                        ? `${imageURL}${image}`
-                        : '/img/icons/no-image-icon.png'
-                    "
-                    alt="User image"
-                    class="img-fluid" />
-                  <span class="status online"></span
-                ></span>
                 <div class="profilesets">
                   <h6>{{ user }}</h6>
                   <h5>{{ role }}</h5>
                 </div>
               </div>
-              <hr class="m-0" />
-
-              <router-link class="dropdown-item" to="/settings"
-                ><i class="me-2" data-feather="settings"></i
-                >Settings</router-link
-              >
-              <hr class="m-0" />
               <a class="dropdown-item logout pb-0" href="#" @click="logout"
                 ><img
                   src="assets/img/icons/log-out.svg"

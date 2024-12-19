@@ -2,33 +2,6 @@
   <Navbar />
   <div class="page-wrapper">
     <div class="content">
-      <div class="page-header">
-        <div class="add-item d-flex">
-          <div class="page-title">
-            <h4>Store Vegetable</h4>
-            <h6>Store new vegetable</h6>
-          </div>
-        </div>
-        <ul class="table-top-head">
-          <li>
-            <div class="page-btn">
-              <router-link to="products" class="btn btn-secondary"
-                ><i data-feather="arrow-left" class="me-2"></i>Back to
-                Product</router-link
-              >
-            </div>
-          </li>
-          <li>
-            <a
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Collapse"
-              id="collapse-header"
-              ><i data-feather="chevron-up" class="feather-chevron-up"></i
-            ></a>
-          </li>
-        </ul>
-      </div>
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 col-sm-8 col-12">
           <div class="mb-3 add-product text-center">
@@ -74,15 +47,12 @@
                   >
                     <div class="addproduct-icon">
                       <h5>
-                        <i data-feather="info" class="add-info"></i
-                        ><span>Product Information</span>
+                        <font-awesome-icon
+                          :icon="['fas', 'wheat-awn']"
+                          style="padding-right: 2vw; color: green"
+                        />
+                        <span>Product Information</span>
                       </h5>
-                      <a href="javascript:void(0);"
-                        ><i
-                          data-feather="chevron-down"
-                          class="chevron-down-add"
-                        ></i
-                      ></a>
                     </div>
                   </div>
                 </div>
@@ -119,12 +89,7 @@
                               href="javascript:void(0);"
                               data-bs-toggle="modal"
                               data-bs-target="#add-units-category"
-                              ><i
-                                data-feather="plus-circle"
-                                class="plus-down-add"
-                              ></i
-                              ><span>Add New</span></a
-                            >
+                            ></a>
                           </div>
                           <select
                             class="form-control"

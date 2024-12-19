@@ -32,11 +32,6 @@
             /></a>
           </li>
           <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
-              ><i data-feather="printer" class="feather-rotate-ccw"></i
-            ></a>
-          </li>
-          <li>
             <router-link
               to="/products"
               data-bs-toggle="tooltip"
@@ -78,11 +73,8 @@
             <table class="table" id="product-table">
               <thead>
                 <tr>
-                  <th>SKU</th>
                   <th>Product</th>
-                  <th>Category</th>
                   <th>Price</th>
-                  <th>Status</th>
                   <th>Created On</th>
                   <th>Updated On</th>
                   <th class="no-sort">Action</th>
@@ -93,7 +85,6 @@
                   <td colspan="8">No products available</td>
                 </tr>
                 <tr v-else v-for="product in products" :key="product._id">
-                  <td>{{ product.sku }}</td>
                   <td>
                     <div class="productimgname">
                       <a
@@ -110,19 +101,7 @@
                       <a href="javascript:void(0);">{{ product.name }}</a>
                     </div>
                   </td>
-                  <td>{{ product.category }}</td>
                   <td>{{ product.price.toFixed(2) }}</td>
-                  <td>
-                    <span
-                      :class="{
-                        badge: true,
-                        'badge-linesuccess': product.status === 'active',
-                        'badge-linewarning': product.status === 'inactive',
-                      }"
-                    >
-                      {{ product.status }}
-                    </span>
-                  </td>
                   <td>{{ $formatDate(product.createdAt) }}</td>
                   <td>{{ $formatDate(product.updatedAt) }}</td>
                   <td class="action-table-data">
