@@ -198,7 +198,7 @@ export default {
     const selectedProductId = ref(null);
     const entryValue = ref(null);
     const newQuantityAlert = ref(0);
-    const activeTab = ref("low");
+    const activeTab = ref("all");
     const tableInstance = ref(null);
     const loadingStates = ref({
       all: false,
@@ -207,7 +207,6 @@ export default {
       history: false,
     });
     onMounted(() => {
-      // Fetch data for the active tab on
       setTimeout(() => {
         const activeTabData = tabs.find((tab) => tab.key === activeTab.value);
         if (activeTabData && activeTabData.fetch) {

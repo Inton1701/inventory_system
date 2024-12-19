@@ -3,6 +3,13 @@
   <Sidebar />
   <div class="page-wrapper">
     <div class="content">
+      <div class="page-header">
+        <div class="add-item d-flex">
+          <div class="page-title">
+            <h6>Manage Returns</h6>
+          </div>
+        </div>
+      </div>
       <div class="card table-list-card">
         <div class="card-body">
           <div class="table-responsive">
@@ -135,7 +142,7 @@
               <strong>Date:</strong> {{ selectedTransaction.createdAt }}
             </h6>
             <h6 class="mb-2">
-              <strong>Total Amount:</strong> ${{
+              <strong>Total Amount:</strong> ₱{{
                 selectedTransaction.totalAmount
               }}
             </h6>

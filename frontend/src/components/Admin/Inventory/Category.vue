@@ -25,22 +25,21 @@
             <ClipLoader v-if="loading" />
             <table v-else class="table datanew" id="category-table">
               <thead>
-                <tr>
+                <tr class="table-header">
                   <th>Category</th>
                   <th>Created On</th>
-
                   <th class="no-sort">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-if="categories.length <= 0">
-                  <td colspan="8">No products available</td>
+                  <td colspan="3" class="text-center">No products available</td>
                 </tr>
                 <tr v-else v-for="category in categories" :key="category.id">
                   <td>{{ category.name }}</td>
                   <td>{{ $formatDate(category.createdAt) }}</td>
                   <td class="action-table-data">
-                    <div class="edit-delete-action">
+                    <div class="d-flex justify-content-between">
                       <a
                         class="me-2 p-2"
                         href="#"
@@ -96,22 +95,6 @@
                 required
               />
             </div>
-            <div class="mb-0">
-              <div
-                class="status-toggle modal-status d-flex justify-content-between"
-              >
-                <span class="form-label">{{ newCategory.status }}</span>
-                <input
-                  type="checkbox"
-                  id="add-category-status"
-                  class="check"
-                  v-model="newCategory.status"
-                  :true-value="'active'"
-                  :false-value="'inactive'"
-                />
-                <label for="add-category-status" class="checktoggle"></label>
-              </div>
-            </div>
             <div class="modal-footer-btn">
               <button
                 type="button"
@@ -158,22 +141,6 @@
                 required
               />
             </div>
-            <div class="mb-0">
-              <div
-                class="status-toggle modal-status d-flex justify-content-between"
-              >
-                <span class="form-label">{{ editCategory.status }}</span>
-                <input
-                  type="checkbox"
-                  id="edit-category-status"
-                  class="check"
-                  v-model="editCategory.status"
-                  :true-value="'active'"
-                  :false-value="'inactive'"
-                />
-                <label for="edit-category-status" class="checktoggle"></label>
-              </div>
-            </div>
             <div class="modal-footer-btn">
               <button
                 type="button"
@@ -205,16 +172,15 @@ export default {
     Navbar,
     ClipLoader,
   },
-
   setup() {
     const apiURL = process.env.VUE_APP_URL;
     const imageURL = process.env.VUE_APP_IMAGE_URL;
     const categories = ref([]);
     const newCategory = ref({
       name: "",
-      status: "inactive",
+      status: "active",
     });
-    const editCategory = ref({ _id: null, name: "", status: "inactive" });
+    const editCategory = ref({ _id: null, name: "", status: "active" });
     const loading = ref(true);
     const initializeDataTable = () => {
       const tableElement = $("#category-table");
@@ -309,7 +275,6 @@ export default {
         Swal.fire("Error", "Failed to update category", "error");
       }
     };
-
     const deleteCategory = async (id) => {
       Swal.fire({
         title: "Are you sure?",
@@ -375,3 +340,87 @@ export default {
   },
 };
 </script>
+
+<style>
+/* General Table Styles */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse; /* Collapsing borders */
+  border-spacing: 0 12px; /* Slightly larger spacing for cleaner look */
+  max-width: 100%; /* Ensures the table does not exceed container width */
+  table-layout: fixed; /* Ensures the table adjusts to content size */
+}
+
+/* Table Header */
+.table th {
+  padding: 12px 18px;
+  background-color: #f4f7fa;
+  font-weight: 600;
+  color: #5c6d7d;
+  text-align: left;
+  border-bottom: 3px solid #e0e0e0;
+  text-transform: uppercase;
+  word-wrap: break-word; /* Ensures long words wrap to the next line */
+}
+
+/* Table Body */
+.table th,
+.table td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  text-align: left;
+  border: none;
+  word-wrap: break-word; /* Ensures long text breaks and doesn't overflow */
+}
+
+/* Alternating Row Colors */
+.table tbody tr {
+  background-color: #fff;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover Effect for Rows */
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Action Column (Centered with Elegant Icons) */
+.action-table-data {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex a {
+  color: #6c757d;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.d-flex a:hover {
+  color: #007bff;
+  transform: scale(1.1);
+}
+
+/* Optional: Transition for hover effect in the table cells */
+.table th,
+.table td {
+  transition: background-color 0.3s ease;
+}
+</style>
