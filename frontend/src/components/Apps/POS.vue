@@ -1,28 +1,43 @@
 <template>
   <div class="main-wrapper">
     <div class="header">
-    <div class="d-flex justify-content-between align-items-center">
-      <!-- Logo / Title -->
-      <div class="logo">
-      <img src="assets/img/logo.png" alt="POSExpress"     class="img-fluid "
-      style="width: 200px; height: 60px;" />
-    </div>
+      <div class="d-flex justify-content-between align-items-center">
+        <!-- Logo / Title -->
+        <div class="logo">
+          <img
+            src="assets/img/logo.png"
+            alt="POSExpress"
+            class="img-fluid"
+            style="width: 200px; height: 60px"
+          />
+        </div>
 
-      <!-- Logout Button -->
-      <button class="btn btn-primary" @click="logout()">LOGOUT</button>
+        <!-- Logout Button -->
+        <button class="btn btn-primary" @click="logout()">LOGOUT</button>
+      </div>
     </div>
-  </div>
 
     <div class="page-wrapper pos-pg-wrapper ms-0">
       <div class="content pos-design p-0">
         <div class="row align-items-start pos-wrapper">
-          <div class="col-md-3 col-lg-2 ">
+          <div class="col-md-3 col-lg-2">
             <div class="category-list">
               <h5>Categories</h5>
-              <ul class="list-group text-center overflow-auto"
-                style="max-height:100vh; overflow-y: auto; scrollbar-width: thin;">
-                <li v-for="category in categories" :key="category.name" class="list-group-item"
-                  :class="{ 'active': selectedCategory === category.name }" @click="selectCategory(category.name)">
+              <ul
+                class="list-group text-center overflow-auto"
+                style="
+                  max-height: 100vh;
+                  overflow-y: auto;
+                  scrollbar-width: thin;
+                "
+              >
+                <li
+                  v-for="category in categories"
+                  :key="category.name"
+                  class="list-group-item"
+                  :class="{ active: selectedCategory === category.name }"
+                  @click="selectCategory(category.name)"
+                >
                   <a href="javascript:void(0);">{{ category.name }}</a>
                 </li>
               </ul>
@@ -32,13 +47,19 @@
           <div class="col-md-12 col-lg-6">
             <div class="row bg-white px-3 pb-4 mx-1 mt-2">
               <h4>Enter Barcode:</h4>
-              <input v-model="barcode" ref="barcodeInput"
-                class="form-control bg-light border border-dark fs-3 mb-2 mt-3" type="text"
-                @keydown.esc="openEditCartModal" 
-                @keyup.enter="addProduct()" 
-                @keydown.end="cancelTransaction" 
-                placeholder="Scan Barcode" />
-              <p v-if="barcodeError.message" class="text-danger">ERROR: {{ barcodeError.message }}</p>
+              <input
+                v-model="barcode"
+                ref="barcodeInput"
+                class="form-control bg-light border border-dark fs-3 mb-2 mt-3"
+                type="text"
+                @keydown.esc="openEditCartModal"
+                @keyup.enter="addProduct()"
+                @keydown.end="cancelTransaction"
+                placeholder="Scan Barcode"
+              />
+              <p v-if="barcodeError.message" class="text-danger">
+                ERROR: {{ barcodeError.message }}
+              </p>
             </div>
             <div class="row pos-wrapper">
               <div class="row">
@@ -48,32 +69,53 @@
                       <!-- Display products based on selected category -->
                       <div v-if="products.length" class="tab_content active">
                         <div class="row">
-                          <div v-for="product in products" :key="product.id"
-                            class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-3 product-item">
-                            <div class="product-info" @click="addProduct(product)">
+                          <div
+                            v-for="product in products"
+                            :key="product.id"
+                            class="col-sm-3 col-md-3 col-lg-3 col-xl-3 col-3 product-item"
+                          >
+                            <div
+                              class="product-info"
+                              @click="addProduct(product)"
+                            >
                               <a href="javascript:void(0);" class="img-bg">
-                                <img v-if="product.image" :src="`${imgURL}${product.image}`" alt="Product" />
-                                <img v-else :src="`/img/icons/no-image-icon.png`" />
+                                <img
+                                  v-if="product.image"
+                                  :src="`${imgURL}${product.image}`"
+                                  alt="Product"
+                                />
+                                <img
+                                  v-else
+                                  :src="`/img/icons/no-image-icon.png`"
+                                />
                                 <span><i data-feather="check"></i></span>
                               </a>
                               <h6 class="product-name ms-2">
-                                <a href="javascript:void(0);">{{ product.name }}</a>
+                                <a href="javascript:void(0);">{{
+                                  product.name
+                                }}</a>
                               </h6>
-                              <div class="d-flex ms-2 align-items-center justify-content-between price">
+                              <div
+                                class="d-flex ms-2 align-items-center justify-content-between price"
+                              >
                                 <span>Stock: {{ product.quantity }}</span>
                                 <p class="me-2">${{ product.price }}</p>
                               </div>
                             </div>
                           </div>
-
                         </div>
                       </div>
 
                       <!-- If no products, show a message -->
-                      <div v-else class="d-flex justify-content-center align-items-center" style="height: 80vh;">
-                        <p class="text-center">No products available in this category.</p>
+                      <div
+                        v-else
+                        class="d-flex justify-content-center align-items-center"
+                        style="height: 80vh"
+                      >
+                        <p class="text-center">
+                          No products available in this category.
+                        </p>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -86,12 +128,38 @@
             <aside class="order-sidebar">
               <div class="d-flex justify-content-between align-items-center">
                 Order List
-          
-                <span>
-                  <button class="btn btn-info px-4 py-1 mx-1" @click="openEditCartModal"><span class="keyboard-key" style="font-size: 8px; padding: 1px;">ESC</span>  <font-awesome-icon icon="fa-pen-to-square" class="feather-edit" /></button>
-                  <button class="btn btn-danger px-4 py-1 mx-1" @click="cancelTransaction" id="del-btn"><span class="keyboard-key" style="font-size: 8px; padding: 1px;">DEL</span> <font-awesome-icon icon="fa-trash" class="feather-trash-2" /></button>
-                </span>
 
+                <span>
+                  <button
+                    class="btn btn-info px-4 py-1 mx-1"
+                    @click="openEditCartModal"
+                  >
+                    <span
+                      class="keyboard-key"
+                      style="font-size: 8px; padding: 1px"
+                      >ESC</span
+                    >
+                    <font-awesome-icon
+                      icon="fa-pen-to-square"
+                      class="feather-edit"
+                    />
+                  </button>
+                  <button
+                    class="btn btn-danger px-4 py-1 mx-1"
+                    @click="cancelTransaction"
+                    id="del-btn"
+                  >
+                    <span
+                      class="keyboard-key"
+                      style="font-size: 8px; padding: 1px"
+                      >DEL</span
+                    >
+                    <font-awesome-icon
+                      icon="fa-trash"
+                      class="feather-trash-2"
+                    />
+                  </button>
+                </span>
               </div>
               <div class="product-added">
                 <div class="product-wrap">
@@ -134,123 +202,243 @@
                   </tr>
                   <tr>
                     <td class="fs-5 fw-bolder">Total</td>
-                    <td class="text-end fs-5 fw-bolder">{{ total.toFixed(2) }}</td>
+                    <td class="text-end fs-5 fw-bolder">
+                      {{ total.toFixed(2) }}
+                    </td>
                   </tr>
                   <tr v-if="change">
                     <td class="fs-5 fw-bolder text-danger">Change</td>
-                    <td class="text-end fs-5 fw-bolder text-danger">{{ change }}</td>
+                    <td class="text-end fs-5 fw-bolder text-danger">
+                      {{ change }}
+                    </td>
                   </tr>
                 </table>
               </div>
 
-              <div class="btn-row d-sm-flex align-items-center justify-content-between mb-5">
-                <a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill position-relative p-3 fs-6"
-                  @click="openPaymentModal">
+              <div
+                class="btn-row d-sm-flex align-items-center justify-content-between mb-5"
+              >
+                <a
+                  href="javascript:void(0);"
+                  class="btn btn-success btn-icon flex-fill position-relative p-3 fs-6"
+                  @click="openPaymentModal"
+                >
                   <span class="keyboard-key">F1</span>
                   <span class="me-1 d-flex align-items-center">
-                    <i data-feather="credit-card" class="feather-16"></i>
-                  </span>Pay
+                    <i data-feather="credit-card" class="feather-16"></i> </span
+                  >Pay
                 </a>
-                <a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill position-relative p-3 fs-6"
-                  @click="openVoidModal">
+                <a
+                  href="javascript:void(0);"
+                  class="btn btn-danger btn-icon flex-fill position-relative p-3 fs-6"
+                  @click="openVoidModal"
+                >
                   <span class="keyboard-key">F2</span>
                   <span class="me-1 d-flex align-items-center">
-                    <i data-feather="trash-2" class="feather-16"></i>
-                  </span>Void
+                    <i data-feather="trash-2" class="feather-16"></i> </span
+                  >Void
                 </a>
 
-                <a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill position-relative p-3 fs-6"
-                  @click="openReturnModal">
+                <a
+                  href="javascript:void(0);"
+                  class="btn btn-info btn-icon flex-fill position-relative p-3 fs-6"
+                  @click="openReturnModal"
+                >
                   <span class="keyboard-key">F3</span>
                   <span class="me-1 d-flex align-items-center">
-                    <i data-feather="corner-up-right" class="feather-16"></i>
-                  </span>Return
+                    <i
+                      data-feather="corner-up-right"
+                      class="feather-16"
+                    ></i> </span
+                  >Return
                 </a>
               </div>
             </aside>
           </div>
-
         </div>
       </div>
     </div>
   </div>
   <!-- Modal for Updating Quantity -->
-  <div class="modal fade" id="update-quantity-modal" tabindex="-1" aria-labelledby="update-quantity-modalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="update-quantity-modal"
+    tabindex="-1"
+    aria-labelledby="update-quantity-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="update-quantity-modalLabel">Update Quantity</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="update-quantity-modalLabel">
+            Update Quantity
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <label for="new-quantity">Quantity</label>
-            <input type="number" id="new-quantity" class="form-control" v-model="newQuantity" min="1"
-              @keydown="handleModalKeydown" />
+            <input
+              type="number"
+              id="new-quantity"
+              class="form-control"
+              v-model="newQuantity"
+              min="1"
+              @keydown="handleModalKeydown"
+            />
           </div>
           <p v-if="quantityError" class="text-danger">{{ quantityError }}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="updateProductQuantity">Update</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="updateProductQuantity"
+          >
+            Update
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal for Payment -->
-  <div class="modal fade" id="payment-modal" tabindex="-1" aria-labelledby="payment-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="payment-modal"
+    tabindex="-1"
+    aria-labelledby="payment-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="payment-modalLabel">Payment</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <label for="payment">Amount to Pay: ${{ total }}</label>
-            <input type="number" id="payment" class="form-control" v-model="clientPayment" min="1"
-              @keydown.enter="processPayment" placeholder="Enter payment amount" />
+            <input
+              type="number"
+              id="payment"
+              class="form-control"
+              v-model="clientPayment"
+              min="1"
+              @keydown.enter="processPayment"
+              placeholder="Enter payment amount"
+            />
           </div>
-          <p v-if="paymentError.message" class="text-danger">{{ paymentError.message }}</p>
+          <p v-if="paymentError.message" class="text-danger">
+            {{ paymentError.message }}
+          </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="processPayment">Process Payment</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" @click="processPayment">
+            Process Payment
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="modal fade" id="return-modal" tabindex="-1" aria-labelledby="return-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="return-modal"
+    tabindex="-1"
+    aria-labelledby="return-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="return-modalLabel">Enter Transaction ID for Return</h5>
-          <button type="button" class="btn-close" id="return-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="return-modalLabel">
+            Enter Transaction ID for Return
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            id="return-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
-          <input v-model="transactionId" class="form-control" type="text" placeholder="Transaction ID"
-            @keydown.enter="fetchTransactionItems" />
-          <p v-if="transactionError" class="text-danger">{{ transactionError }}</p>
+          <input
+            v-model="transactionId"
+            class="form-control"
+            type="text"
+            placeholder="Transaction ID"
+            @keydown.enter="fetchTransactionItems"
+          />
+          <p v-if="transactionError" class="text-danger">
+            {{ transactionError }}
+          </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="fetchTransactionItems">Fetch Items</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="fetchTransactionItems"
+          >
+            Fetch Items
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal for Return Item Selection -->
-  <div class="modal fade" id="select-return-items-modal" tabindex="-1" aria-labelledby="select-return-items-modalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="select-return-items-modal"
+    tabindex="-1"
+    aria-labelledby="select-return-items-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="select-return-items-modalLabel">Select Items for Return</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="select-return-items-modalLabel">
+            Select Items for Return
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <table class="table" tabindex="0" @keydown="handleKeyNavigation">
@@ -264,65 +452,123 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in returnItems" :key="item._id" :class="{ focused: index === focusedIndex }">
+              <tr
+                v-for="(item, index) in returnItems"
+                :key="item._id"
+                :class="{ focused: index === focusedIndex }"
+              >
                 <td>
                   <input type="checkbox" v-model="item.selected" />
                 </td>
-                
+
                 <td>{{ item.name }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>
-                  <input type="number" v-model="item.returnQuantity" :max="item.quantity" min="1"
-                    :autofocus="index === focusedIndex" @input="validateReturnQuantity(item)" />
+                  <input
+                    type="number"
+                    v-model="item.returnQuantity"
+                    :max="item.quantity"
+                    min="1"
+                    :autofocus="index === focusedIndex"
+                    @input="validateReturnQuantity(item)"
+                  />
                 </td>
                 <td>${{ item.price }}</td>
               </tr>
-              <input type="hidden" item.sku>
+              <input type="hidden" item.sku />
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="processReturn">Process Return</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" @click="processReturn">
+            Process Return
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Void Transaction Modal -->
-  <div class="modal fade" id="void-transaction-modal" tabindex="-1" aria-labelledby="voidTransactionModalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="void-transaction-modal"
+    tabindex="-1"
+    aria-labelledby="voidTransactionModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="voidTransactionModalLabel">Void Transaction</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="voidTransactionModalLabel">
+            Void Transaction
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form @submit.prevent="processVoid">
             <div class="mb-3">
-              <label for="transaction-id" class="form-label">Transaction ID</label>
-              <input type="text" id="transaction-id" class="form-control" v-model="transactionId"
-                placeholder="Enter Transaction ID" required>
+              <label for="transaction-id" class="form-label"
+                >Transaction ID</label
+              >
+              <input
+                type="text"
+                id="transaction-id"
+                class="form-control"
+                v-model="transactionId"
+                placeholder="Enter Transaction ID"
+                required
+              />
             </div>
-            <p v-if="transactionError" class="text-danger">{{ transactionError }}</p>
+            <p v-if="transactionError" class="text-danger">
+              {{ transactionError }}
+            </p>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" @click="processVoid">Void Transaction</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <button type="button" class="btn btn-danger" @click="processVoid">
+            Void Transaction
+          </button>
         </div>
       </div>
     </div>
   </div>
 
-
-  <div class="modal fade" id="edit-cart-modal" tabindex="-1" aria-labelledby="edit-cart-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="edit-cart-modal"
+    tabindex="-1"
+    aria-labelledby="edit-cart-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="edit-cart-modalLabel">Edit Cart Items</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <table class="table" tabindex="0" @keydown="handleCartKeyNavigation">
@@ -336,43 +582,68 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(item, index) in cart" :key="item._id" :class="{ focused: index === focusedCartIndex }">
+              <tr
+                v-for="(item, index) in cart"
+                :key="item._id"
+                :class="{ focused: index === focusedCartIndex }"
+              >
                 <td>{{ item.name }}</td>
                 <td>
-                  <input type="number" v-model="item.quantity" min="1" @input="validateCartQuantity(item)" />
+                  <input
+                    type="number"
+                    v-model="item.quantity"
+                    min="1"
+                    @input="validateCartQuantity(item)"
+                  />
                 </td>
                 <td>${{ item.price }}</td>
-                <td>${{ item.price * item.quantity}}</td>
+                <td>${{ item.price * item.quantity }}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm" @click="removeCartItem(index)">Delete</button>
+                  <button
+                    class="btn btn-danger btn-sm"
+                    @click="removeCartItem(index)"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="saveCartChanges">Save Changes</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            @click="saveCartChanges"
+          >
+            Save Changes
+          </button>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 <script>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { useRouter } from 'vue-router';
-import { modalController } from '@/utils/modalController';
-import axios from 'axios';
-import 'sweetalert2'
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { useRouter } from "vue-router";
+import { modalController } from "@/utils/modalController";
+import axios from "axios";
+import "sweetalert2";
 
 export default {
   setup() {
     const router = useRouter();
     const apiURL = process.env.VUE_APP_URL;
     const imgURL = process.env.VUE_APP_IMAGE_URL;
-    const selectedCategory = ref('all');
-    const barcode = ref('');
+    const selectedCategory = ref("all");
+    const barcode = ref("");
     const barcodeInput = ref(null);
     const cart = ref([]);
     const categories = ref([]);
@@ -388,7 +659,7 @@ export default {
     const change = ref(null);
     const clientPayment = ref(null);
     const products = ref([]);
-    const transactionId = ref('');
+    const transactionId = ref("");
     const transactionError = ref(null);
     const returnItems = ref([]);
     const focusedIndex = ref(0);
@@ -396,15 +667,12 @@ export default {
     const isNewTransaction = ref(true);
     const isTransactionOpen = ref(false);
 
-    const total = computed(() =>
-      subtotal.value + (subtotal.value * VAT.value) / 100 - discount.value
+    const total = computed(
+      () => subtotal.value + (subtotal.value * VAT.value) / 100 - discount.value
     );
-
-    
 
     // Methods
     const getCategories = async () => {
-
       try {
         if (await checkState()) return;
         const response = await axios.get(`${apiURL}/get_category_list`);
@@ -417,7 +685,9 @@ export default {
     const getProductsByCategory = async (categoryName) => {
       try {
         if (await checkState()) return;
-        const response = await axios.get(`${apiURL}/get_products_by_category/${categoryName}`);
+        const response = await axios.get(
+          `${apiURL}/get_products_by_category/${categoryName}`
+        );
         products.value = response.data.products;
       } catch (error) {
         console.error(error);
@@ -429,27 +699,27 @@ export default {
       getProductsByCategory(categoryName); // Fetch products for the selected category
     };
 
-
     const filteredCategories = computed(() => {
       // Filter products based on the selected category
-      if (selectedCategory.value === 'all') {
+      if (selectedCategory.value === "all") {
         return categories.value;
       }
-      return categories.value.filter(category => category.name === selectedCategory.value);
+      return categories.value.filter(
+        (category) => category.name === selectedCategory.value
+      );
     });
-
 
     const addProduct = async (product = null) => {
       try {
         if (await checkState()) return;
 
         if (isNewTransaction.value) {
-      cart.value = []; // Clear the cart
-      subtotal.value = 0;
-      discount.value = 0;
-      change.value = null;
-      isNewTransaction.value = false; // Set to false after starting a new transaction
-    }
+          cart.value = []; // Clear the cart
+          subtotal.value = 0;
+          discount.value = 0;
+          change.value = null;
+          isNewTransaction.value = false; // Set to false after starting a new transaction
+        }
         if (!product) {
           if (!barcode.value.trim()) {
             return;
@@ -459,10 +729,10 @@ export default {
             const sku = barcode.value.trim().substring(1);
             const lookup = await axios.get(`${apiURL}/get_product_info/${sku}`);
             if (lookup.data.success) {
-              product = lookup.data.product
+              product = lookup.data.product;
               Swal.fire({
-            title: product.name,
-            html: `
+                title: product.name,
+                html: `
             <div style="display: flex; justify-content: space-between;">
               <p style="flex: 1; text-align: left;"><strong>SKU:</strong></p>
               <p style="flex: 1; text-align: right;">${product.sku}</p>
@@ -476,25 +746,28 @@ export default {
               <p style="flex: 1; text-align: right;">${product.quantity}</p>
             </div>
             `,
-            icon: 'info',
+                icon: "info",
               });
 
               barcodeError.value.message = null;
               return;
             } else {
-              barcodeError.value.message = lookup.data.message || "Product not found.";
+              barcodeError.value.message =
+                lookup.data.message || "Product not found.";
               return;
             }
-   
           }
 
-          const response = await axios.get(`${apiURL}/get_product_info/${barcode.value.trim()}`);
+          const response = await axios.get(
+            `${apiURL}/get_product_info/${barcode.value.trim()}`
+          );
           if (response.data.success) {
             product = response.data.product; // Assign the fetched product
 
             barcodeError.value.message = null;
           } else {
-            barcodeError.value.message = response.data.message || "Product not found.";
+            barcodeError.value.message =
+              response.data.message || "Product not found.";
             return;
           }
         }
@@ -504,7 +777,9 @@ export default {
         stockQuantity.value = product.quantity;
 
         // Check if the product is already in the cart
-        const existingItem = cart.value.find((item) => item._id === product._id);
+        const existingItem = cart.value.find(
+          (item) => item._id === product._id
+        );
 
         if (existingItem) {
           // Increment quantity if product is already in the cart
@@ -526,48 +801,51 @@ export default {
         updateSubtotal(); // Update the subtotal after adding the product
       } catch (error) {
         console.error("Error adding product:", error);
-        barcodeError.value.message = "An error occurred while fetching the product.";
+        barcodeError.value.message =
+          "An error occurred while fetching the product.";
       } finally {
         barcode.value = ""; // Clear the barcode input
       }
     };
 
-
     const updateSubtotal = () => {
-      subtotal.value = cart.value.reduce((sum, item) => sum + item.quantity * item.price, 0);
+      subtotal.value = cart.value.reduce(
+        (sum, item) => sum + item.quantity * item.price,
+        0
+      );
     };
 
     const handleKeydown = (event) => {
       switch (event.key) {
-        case 'F1':
+        case "F1":
           event.preventDefault();
           openPaymentModal();
           break;
-        case 'F2':
+        case "F2":
           event.preventDefault();
           openVoidModal(); // open return modal
           break;
-        case 'F3':
+        case "F3":
           event.preventDefault();
           openReturnModal(); // open return modal
           break;
-        case 'q':
+        case "q":
           event.preventDefault();
           openUpdateQuantityModal(); // Open quantity modal
           break;
-        case 'Escape':
+        case "Escape":
           // Refocus on the barcode input
           if (barcodeInput.value) {
             barcodeInput.value.focus();
-            transactionId.value = ''; // Clear transaction ID
+            transactionId.value = ""; // Clear transaction ID
             returnItems.value = []; // Clear previously selected items
             transactionError.value = null; // Clear any previous errors
           }
           break;
-          case 'l': // Check for Ctrl + L
+        case "l": // Check for Ctrl + L
           if (event.ctrlKey) {
             event.preventDefault();
-            router.push('/lockscreen'); // Redirect to lock screen
+            router.push("/lockscreen"); // Redirect to lock screen
           }
           break;
         default:
@@ -575,26 +853,25 @@ export default {
       }
     };
     const resetTransactions = () => {
-      transactionId.value = '';
+      transactionId.value = "";
       returnItems.value = [];
       transactionError.value = null;
-    }
+    };
 
-    const openPaymentModal = async() => {
+    const openPaymentModal = async () => {
       if (await checkState()) return;
       if (total.value > 0) {
         resetTransactions();
-        modalController.show('payment-modal');
-        modalController.focus('payment-modal');
+        modalController.show("payment-modal");
+        modalController.focus("payment-modal");
       }
-
     };
 
     const openReturnModal = async () => {
       if (await checkState()) return;
       resetTransactions();
-      modalController.show('return-modal');
-      modalController.focus('return-modal');
+      modalController.show("return-modal");
+      modalController.focus("return-modal");
       addNavigationListener();
     };
     const addNavigationListener = () => {
@@ -605,36 +882,33 @@ export default {
       window.removeEventListener("keydown", handleKeyNavigation);
     };
 
-    const openVoidModal = async() => {
+    const openVoidModal = async () => {
       if (await checkState()) return;
       resetTransactions();
-      modalController.show('void-transaction-modal');
-      modalController.focus('void-transaction-modal');
+      modalController.show("void-transaction-modal");
+      modalController.focus("void-transaction-modal");
     };
 
-
-
-    const handleModalKeydown = async(event) => {
+    const handleModalKeydown = async (event) => {
       if (await checkState()) return;
       // Check for Enter key
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         event.preventDefault(); // Prevent default form submission
         updateProductQuantity(); // Trigger the update function
       }
 
       // Check for Escape key
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         event.preventDefault(); // Prevent default behavior
-        modalController.hide('update-quantity-modal')
+        modalController.hide("update-quantity-modal");
       }
-
     };
 
     const openUpdateQuantityModal = () => {
       if (lastAddedProduct.value) {
         // Open modal to update quantity
-        modalController.show('update-quantity-modal');
-        modalController.focus('update-quantity-modal');
+        modalController.show("update-quantity-modal");
+        modalController.focus("update-quantity-modal");
       } else {
         barcodeError.value.message = "No product in cart yet.";
       }
@@ -669,7 +943,10 @@ export default {
         };
 
         // Send transaction data to the backend
-        const response = await axios.post(`${apiURL}/commit_transaction`, transactionData);
+        const response = await axios.post(
+          `${apiURL}/commit_transaction`,
+          transactionData
+        );
 
         if (response.data.success) {
           // Backend transaction was successful
@@ -678,81 +955,77 @@ export default {
           // Calculate change
           change.value = (clientPayment.value - total.value).toFixed(2);
 
-
           clientPayment.value = null;
           paymentError.value.message = null;
 
           // Notify the user of successful payment (optional)
           Swal.fire({
-            title: 'Success!',
-            text: 'Transaction successful.',
-            icon: 'success',
-            timer: 1500, // 
-            showConfirmButton: false // Optional: Hide the confirm button
+            title: "Success!",
+            text: "Transaction successful.",
+            icon: "success",
+            timer: 1500, //
+            showConfirmButton: false, // Optional: Hide the confirm button
           });
 
           // Close the payment modal
-          modalController.hide('payment-modal')
+          modalController.hide("payment-modal");
           isNewTransaction.value = true;
-
         } else {
           // Backend returned an error
-          paymentError.value.message = response.data.message || "Failed to process transaction.";
+          paymentError.value.message =
+            response.data.message || "Failed to process transaction.";
           console.error("Transaction failed:", response.data.message);
         }
       } catch (error) {
         // Handle network or server errors
         console.error("Error processing payment:", error);
-        paymentError.value.message = "An error occurred while processing the payment. Please try again.";
+        paymentError.value.message =
+          "An error occurred while processing the payment. Please try again.";
       }
     };
-
 
     const processVoid = async () => {
       try {
         if (await checkState()) return;
         const response = await axios.post(`${apiURL}/void_transaction`, {
           transactionId: transactionId.value,
-          employee: 'JohnDoe' // Replace with actual employee information
+          employee: "JohnDoe", // Replace with actual employee information
         });
 
         if (response.data.success) {
           // Display success message
           Swal.fire({
-            title: 'Voided!',
-            text: 'Transaction has been successfully voided.',
-            icon: 'success',
+            title: "Voided!",
+            text: "Transaction has been successfully voided.",
+            icon: "success",
             timer: 1500,
-            showConfirmButton: false
+            showConfirmButton: false,
           });
 
           // Clear transaction ID and close the modal
           resetTransactions();
-          modalController.hide('void-transaction-modal');
+          modalController.hide("void-transaction-modal");
         } else {
           // Handle server error messages
           Swal.fire({
-            title: 'Error',
-            text: response.data.message || 'Failed to void the transaction.',
-            icon: 'error',
+            title: "Error",
+            text: response.data.message || "Failed to void the transaction.",
+            icon: "error",
             timer: 2000,
-            showConfirmButton: false
-
+            showConfirmButton: false,
           });
         }
       } catch (error) {
         // Handle unexpected errors
         Swal.fire({
-          title: 'Error',
+          title: "Error",
           text: `An error occurred: ${error.message}`,
-          icon: 'error',
+          icon: "error",
           timer: 2000,
-          showConfirmButton: false
-
+          showConfirmButton: false,
         });
       }
     };
-
 
     const updateProductQuantity = async () => {
       if (await checkState()) return;
@@ -763,14 +1036,16 @@ export default {
         }
 
         // Update quantity in cart
-        const cartItem = cart.value.find((item) => item._id === lastAddedProduct.value._id);
+        const cartItem = cart.value.find(
+          (item) => item._id === lastAddedProduct.value._id
+        );
         if (cartItem) {
           cartItem.quantity = newQuantity.value;
         }
 
         updateSubtotal();
 
-        modalController.hide('update-quantity-modal');
+        modalController.hide("update-quantity-modal");
         newQuantity.value = 1;
         quantityError.value = null;
 
@@ -782,19 +1057,21 @@ export default {
     };
     const fetchTransactionItems = async () => {
       try {
-        modalController.hide('return-modal');
+        modalController.hide("return-modal");
         removeNavigationListener();
 
         // Fetch transaction items from the API
-        const response = await axios.get(`${apiURL}/get_transaction_items/${transactionId.value}`);
+        const response = await axios.get(
+          `${apiURL}/get_transaction_items/${transactionId.value}`
+        );
         const { success, cart, totalAmount } = response.data;
 
         if (success && cart && Array.isArray(cart)) {
           // Process the cart items
-          console.log('Transaction cart items:', cart);
+          console.log("Transaction cart items:", cart);
 
           // Populate the returnItems array with the fetched items
-          returnItems.value = cart.map(item => ({
+          returnItems.value = cart.map((item) => ({
             _id: item._id,
             sku: item.sku,
             name: item.name,
@@ -804,37 +1081,44 @@ export default {
             returnQuantity: 0, // Initialize return quantity to 0
           }));
 
-          modalController.show('select-return-items-modal')
+          modalController.show("select-return-items-modal");
         } else {
-          console.error('Cart is empty or response structure is incorrect');
+          console.error("Cart is empty or response structure is incorrect");
         }
       } catch (error) {
-        console.error('Error fetching transaction items:', error);
+        console.error("Error fetching transaction items:", error);
       }
     };
 
     const processReturn = async () => {
       try {
         if (await checkState()) return;
-        const itemsToReturn = returnItems.value.filter(item => item.selected && item.returnQuantity > 0);
+        const itemsToReturn = returnItems.value.filter(
+          (item) => item.selected && item.returnQuantity > 0
+        );
 
         if (itemsToReturn.length === 0) {
-          transactionError.value = 'Please select at least one item to return.';
+          transactionError.value = "Please select at least one item to return.";
           return;
         }
 
         // Await the axios call to get the response properly
-        const response = await axios.post(`${apiURL}/return_transaction/${transactionId.value}`, {
-          returnedItems: itemsToReturn,
-          employee: localStorage.getItem("user")
-        });
+        const response = await axios.post(
+          `${apiURL}/return_transaction/${transactionId.value}`,
+          {
+            returnedItems: itemsToReturn,
+            employee: localStorage.getItem("user"),
+          }
+        );
 
         console.log(response.data); // This will now log the actual response data
 
         if (response.data.success) {
           // Update stock and cart
-          itemsToReturn.forEach(item => {
-            const cartItem = cart.value.find(cartItem => cartItem._id === item._id);
+          itemsToReturn.forEach((item) => {
+            const cartItem = cart.value.find(
+              (cartItem) => cartItem._id === item._id
+            );
             if (cartItem) {
               cartItem.quantity -= item.returnQuantity;
               if (cartItem.quantity <= 0) {
@@ -846,35 +1130,32 @@ export default {
 
           // Notify the user of successful payment (optional)
           Swal.fire({
-            title: 'Returned!',
-            text: 'Transaction successful.',
-            icon: 'success',
-            timer: 1500, // 
-            showConfirmButton: false // Optional: Hide the confirm button
+            title: "Returned!",
+            text: "Transaction successful.",
+            icon: "success",
+            timer: 1500, //
+            showConfirmButton: false, // Optional: Hide the confirm button
           });
 
-          modalController.hide('select-return-items-modal')
+          modalController.hide("select-return-items-modal");
           // Clear transaction ID input
-
         } else {
           Swal.fire({
-            title: 'Error',
-            text: response.data.message || 'Failed to process the return.',
-            icon: 'error',
+            title: "Error",
+            text: response.data.message || "Failed to process the return.",
+            icon: "error",
             timer: 2000,
-            showConfirmButton: false
-
+            showConfirmButton: false,
           });
         }
       } catch (error) {
-        console.error('Error processing return:', error);
+        console.error("Error processing return:", error);
         Swal.fire({
-          title: 'Error',
-          text: 'An error occurred while processing the return. Please try again.',
-          icon: 'error',
+          title: "Error",
+          text: "An error occurred while processing the return. Please try again.",
+          icon: "error",
           timer: 2000,
-          showConfirmButton: false
-
+          showConfirmButton: false,
         });
       }
     };
@@ -883,10 +1164,7 @@ export default {
       if (item.returnQuantity > item.quantity) {
         item.returnQuantity = item.quantity; // Reset to maximum allowed
       }
-    }
-
-
-
+    };
 
     const handleKeyNavigation = (event) => {
       const items = returnItems.value; // Access the return items
@@ -895,9 +1173,10 @@ export default {
       if (event.key === "ArrowDown" && focusedIndex.value < items.length - 1) {
         event.preventDefault(); // Prevent scrolling
         focusedIndex.value = (focusedIndex.value + 1) % items.length; // Move focus down
-      } else if (event.key === 'ArrowUp' && focusedIndex.value > 0) {
+      } else if (event.key === "ArrowUp" && focusedIndex.value > 0) {
         event.preventDefault(); // Prevent scrolling
-        focusedIndex.value = (focusedIndex.value - 1 + items.length) % items.length; // Move focus up
+        focusedIndex.value =
+          (focusedIndex.value - 1 + items.length) % items.length; // Move focus up
       } else if (event.key === " ") {
         event.preventDefault(); // Prevent scrolling
         const currentItem = items[focusedIndex.value];
@@ -916,216 +1195,212 @@ export default {
       }
 
       // Trigger autofocus on the input when moving focus
-      const focusedInput = document.querySelector(`#select-return-items-modal .focused input[type="number"]`);
+      const focusedInput = document.querySelector(
+        `#select-return-items-modal .focused input[type="number"]`
+      );
       if (focusedInput) {
         focusedInput.focus();
       }
     };
     const validateCartQuantity = (item) => {
-  if (item.quantity < 0) {
-    item.quantity = 0; // Allow 0 but prevent negative quantities
-  }
-};
-
-
-
-// Handle key navigation and actions in the cart modal
-const handleCartKeyNavigation = (event) => {
-  const items = cart.value; // Access the cart items
-  if (!items || items.length === 0) return; // Exit if no items are present
-
-  switch (event.key) {
-    case "ArrowDown":
-      if (focusedCartIndex.value < items.length - 1) {
-        event.preventDefault(); // Prevent scrolling
-        focusedCartIndex.value++;
+      if (item.quantity < 0) {
+        item.quantity = 0; // Allow 0 but prevent negative quantities
       }
-      break;
+    };
 
-    case "ArrowUp":
-      if (focusedCartIndex.value > 0) {
-        event.preventDefault(); // Prevent scrolling
-        focusedCartIndex.value--;
+    // Handle key navigation and actions in the cart modal
+    const handleCartKeyNavigation = (event) => {
+      const items = cart.value; // Access the cart items
+      if (!items || items.length === 0) return; // Exit if no items are present
+
+      switch (event.key) {
+        case "ArrowDown":
+          if (focusedCartIndex.value < items.length - 1) {
+            event.preventDefault(); // Prevent scrolling
+            focusedCartIndex.value++;
+          }
+          break;
+
+        case "ArrowUp":
+          if (focusedCartIndex.value > 0) {
+            event.preventDefault(); // Prevent scrolling
+            focusedCartIndex.value--;
+          }
+          break;
+
+        case "Delete":
+          event.preventDefault(); // Prevent default behavior
+          removeCartItem(focusedCartIndex.value); // Delete the focused item
+          break;
+
+        case "Enter":
+          event.preventDefault(); // Prevent default behavior
+          // Optionally trigger saving the changes if Enter is pressed
+          saveCartChanges();
+          break;
+
+        default:
+          break;
       }
-      break;
 
-    case "Delete":
-      event.preventDefault(); // Prevent default behavior
-      removeCartItem(focusedCartIndex.value); // Delete the focused item
-      break;
+      // Trigger autofocus on the input of the focused item
+      const focusedInput = document.querySelector(
+        `#edit-cart-modal .focused input[type="number"]`
+      );
+      if (focusedInput) {
+        focusedInput.focus();
+      }
+    };
 
-    case "Enter":
-      event.preventDefault(); // Prevent default behavior
-      // Optionally trigger saving the changes if Enter is pressed
-      saveCartChanges();
-      break;
+    // Remove an item from the cart
+    const removeCartItem = (index) => {
+      cart.value.splice(index, 1); // Remove the item at the specified index
+      if (focusedCartIndex.value >= cart.value.length) {
+        focusedCartIndex.value = cart.value.length - 1; // Adjust focus index
+      }
+      updateSubtotal(); // Update the subtotal after removing an item
+    };
 
-    default:
-      break;
-  }
+    // Save changes to the cart
+    const saveCartChanges = () => {
+      cart.value = cart.value.filter((item) => item.quantity > 0);
 
-  // Trigger autofocus on the input of the focused item
-  const focusedInput = document.querySelector(
-    `#edit-cart-modal .focused input[type="number"]`
-  );
-  if (focusedInput) {
-    focusedInput.focus();
-  }
-};
+      updateSubtotal(); // Update subtotal
+      modalController.hide("edit-cart-modal"); // Close modal
+    };
 
-// Remove an item from the cart
-const removeCartItem = (index) => {
-  cart.value.splice(index, 1); // Remove the item at the specified index
-  if (focusedCartIndex.value >= cart.value.length) {
-    focusedCartIndex.value = cart.value.length - 1; // Adjust focus index
-  }
-  updateSubtotal(); // Update the subtotal after removing an item
-};
-
-// Save changes to the cart
-const saveCartChanges = () => {
-  cart.value = cart.value.filter((item) => item.quantity > 0); 
-
-  updateSubtotal(); // Update subtotal
-  modalController.hide("edit-cart-modal"); // Close modal
-};
-
-// Open the edit cart modal
-const openEditCartModal = async() => {
-  if (await checkState()) return;
-  if (cart.value.length > 0) {
-    focusedCartIndex.value = 0; // Reset focus to the first item
-    modalController.show("edit-cart-modal");
-    modalController.focus("edit-cart-modal");
-  } else {
-    Swal.fire({
-      title: "Cart is empty",
-      text: "Add items to the cart first.",
-      icon: "info",
-      timer: 1500,
-      showConfirmButton: false,
-    });
-    barcodeInput.value.focus();
-  }
-
-};
-
-// Function to handle canceling the transaction and clearing the cart
-const cancelTransaction = () => {
-  // Show SweetAlert for confirmation
-  Swal.fire({
-    title: "Cancel Transaction",
-    text: "Are you sure you want to cancel the transaction and empty the cart?\n press ESC to cancel or ENTER to proceed.",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Proceed",
-    cancelButtonText: "Cancel",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      // Clear the cart if confirmed
-      if(cart.value.length > 0) {
-        cart.value = [];
-      updateSubtotal(); // Update subtotal after emptying cart
-      Swal.fire({
-        title: "Transaction Canceled",
-        text: "Your cart has been emptied.",
-        icon: "success",
-        timer: 1000,
-        showConfirmButton: false,
-      });
-      }else{
+    // Open the edit cart modal
+    const openEditCartModal = async () => {
+      if (await checkState()) return;
+      if (cart.value.length > 0) {
+        focusedCartIndex.value = 0; // Reset focus to the first item
+        modalController.show("edit-cart-modal");
+        modalController.focus("edit-cart-modal");
+      } else {
         Swal.fire({
-        title: "Your Cart is empty",
-        text: "Make new transaction",
-        icon: "info",
-        timer: 1500,
-        showConfirmButton: false,
-      });
-      }
-      barcodeInput.value.focus();
-     
-    }
-  });
-};
-
-const checkState = async () => {
-  try {
-    const response = await axios.get(`${apiURL}/transaction_state`);
-    if (response.data.success) {
-      isTransactionOpen.value = response.data.isOpen;
-
-      if (isTransactionOpen.value === false) {
-        Swal.fire({
-          title: 'Error',
-          text: 'Transaction is already closed, no further actions can be processed.',
-          icon: 'error',
-          timer: 5000,
-          showConfirmButton: false
+          title: "Cart is empty",
+          text: "Add items to the cart first.",
+          icon: "info",
+          timer: 1500,
+          showConfirmButton: false,
         });
-        return true; // Return true if transaction is closed
+        barcodeInput.value.focus();
       }
+    };
 
-      return false; // Return false if the transaction is open
-    } else {
-      console.error("Failed to fetch transaction state.");
-      return false; // Ensure a return value in case of failure
-    }
-  } catch (error) {
-    console.error("Error fetching transaction state:", error);
-    Swal.fire({
-      title: "Error!",
-      text: "Failed to get transaction state",
-      icon: "error",
-      confirmButtonText: "OK",
-    });
-    return false; // Ensure a return value in case of error
-  }
-};
-
-const logout =  () =>{
+    // Function to handle canceling the transaction and clearing the cart
+    const cancelTransaction = () => {
+      // Show SweetAlert for confirmation
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You will be logged out of your account.",
-        icon: 'warning',
+        title: "Cancel Transaction",
+        text: "Are you sure you want to cancel the transaction and empty the cart?\n press ESC to cancel or ENTER to proceed.",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonText: 'Yes, logout!',
-        cancelButtonText: 'Cancel'
-      }).then( async(result) => {
+        confirmButtonText: "Proceed",
+        cancelButtonText: "Cancel",
+      }).then((result) => {
         if (result.isConfirmed) {
-          try{
-            const userId = localStorage.getItem('id');
-          const response = await axios.patch(`${apiURL}/logout/${userId}`)
-          if(response.data.success) {
-          // Clear local storage
-          localStorage.removeItem('token');
-          localStorage.removeItem('role');
-          localStorage.removeItem('id');
-          localStorage.removeItem('user');
-          localStorage.removeItem('emails');
-          localStorage.removeItem("image");
-          
-          // Redirect to home
-          router.push('/');
-          
-          Swal.fire(
-            'Logged Out',
-            'You have been successfully logged out.',
-            'success'
-          );
-          }else{
-            Swal.fire(
-            'Logged Out',
-            'An error occurred during logout',
-            'error'
-          );
-          router.push('/');
+          // Clear the cart if confirmed
+          if (cart.value.length > 0) {
+            cart.value = [];
+            updateSubtotal(); // Update subtotal after emptying cart
+            Swal.fire({
+              title: "Transaction Canceled",
+              text: "Your cart has been emptied.",
+              icon: "success",
+              timer: 1000,
+              showConfirmButton: false,
+            });
+          } else {
+            Swal.fire({
+              title: "Your Cart is empty",
+              text: "Make new transaction",
+              icon: "info",
+              timer: 1500,
+              showConfirmButton: false,
+            });
+          }
+          barcodeInput.value.focus();
+        }
+      });
+    };
+
+    const checkState = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/transaction_state`);
+        if (response.data.success) {
+          isTransactionOpen.value = response.data.isOpen;
+
+          if (isTransactionOpen.value === false) {
+            Swal.fire({
+              title: "Error",
+              text: "Transaction is already closed, no further actions can be processed.",
+              icon: "error",
+              timer: 5000,
+              showConfirmButton: false,
+            });
+            return true; // Return true if transaction is closed
           }
 
-          }catch(error){
-            Swal.fire('Error','An error occurred during logout','error'); 
+          return false; // Return false if the transaction is open
+        } else {
+          console.error("Failed to fetch transaction state.");
+          return false; // Ensure a return value in case of failure
+        }
+      } catch (error) {
+        console.error("Error fetching transaction state:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to get transaction state",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        return false; // Ensure a return value in case of error
+      }
+    };
+
+    const logout = () => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You will be logged out of your account.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, logout!",
+        cancelButtonText: "Cancel",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const userId = localStorage.getItem("id");
+            const response = await axios.patch(`${apiURL}/logout/${userId}`);
+            if (response.data.success) {
+              // Clear local storage
+              localStorage.removeItem("token");
+              localStorage.removeItem("role");
+              localStorage.removeItem("id");
+              localStorage.removeItem("user");
+              localStorage.removeItem("emails");
+              localStorage.removeItem("image");
+
+              // Redirect to home
+              router.push("/");
+
+              Swal.fire(
+                "Logged Out",
+                "You have been successfully logged out.",
+                "success"
+              );
+            } else {
+              Swal.fire(
+                "Logged Out",
+                "An error occurred during logout",
+                "error"
+              );
+              router.push("/");
+            }
+          } catch (error) {
+            Swal.fire("Error", "An error occurred during logout", "error");
             console.log(error);
           }
-         
         }
       });
     };
@@ -1139,12 +1414,12 @@ const logout =  () =>{
         barcodeInput.value.focus();
       }
 
-      window.addEventListener('keydown', handleKeydown); // Listen to keydown events
+      window.addEventListener("keydown", handleKeydown); // Listen to keydown events
       window.addEventListener("keydown", handleCartKeyNavigation);
     });
 
     onBeforeUnmount(() => {
-      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener("keydown", handleKeydown);
       window.removeEventListener("keydown", handleCartKeyNavigation);
     });
 
@@ -1192,13 +1467,11 @@ const logout =  () =>{
       openVoidModal,
       openReturnModal,
       processPayment,
-      logout
+      logout,
     };
   },
 };
 </script>
-
-
 
 <style scoped>
 .focused {
@@ -1302,9 +1575,9 @@ const logout =  () =>{
 }
 
 .list-group-item.active {
-  background-color: #22A95E;
+  background-color: #22a95e;
   /* Green background for active list item */
-  border-color: #22A95E;
+  border-color: #22a95e;
   /* Optional: Match border with the active color */
 }
 
@@ -1323,10 +1596,11 @@ const logout =  () =>{
   color: white;
   padding: 5px 8px;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.btn-info, #del-btn{
+.btn-info,
+#del-btn {
   position: relative; /* Make the button a reference for the absolute key */
   padding-top: 20px; /* Add some padding to avoid content overlap */
 }
@@ -1343,8 +1617,6 @@ const logout =  () =>{
   flex-wrap: wrap;
   flex-shrink: 0;
 }
-
-
 
 .order-summary h6 {
   margin-top: 0;
