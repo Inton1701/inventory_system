@@ -11,24 +11,25 @@
           </div>
         </div>
         <ul class="table-top-head">
-          <li class="bg-success">
+          <li class="bg-danger border rounded-2">
             <a
+             class="bg-danger"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Pdf"
               type="button"
               @click="exportPDFAlert()"
-             >Export to PDF</a>
+             >Generate PDF</a>
           </li>
-          <li>
+          <li  class="bg-success border rounded-2">
             <a
+                  class="bg-success"
               type="button"
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Excel"
               @click="exportCSVAlert()"
-              ><img src="/assets/img/icons/excel.svg" alt="img"
-            /></a>
+              >Generate Excel</a>
           </li>
 
         </ul>
@@ -50,8 +51,8 @@
                   <th>Product</th>
                   <th>Price</th>
                   <th>Category</th>
-                  <th>Created On</th>
-                  <th>Updated On</th>
+                  <th>Created</th>
+                  <th>Updated</th>
                   <th class="no-sort">Action</th>
                 </tr>
               </thead>

@@ -50,7 +50,7 @@ const th = {
       await openTransaction.save();
       res.status(200).json({ success: true, message: "Transaction closed successfully" });
     } catch (error) {
-      res.status(500).json({ success: false, message: "Error closing transaction" });
+      res.status(500).json({ success: true, message: "Error closing transaction" });
     }
   }),
     transactionHistory: asyncHandler( async()=>{

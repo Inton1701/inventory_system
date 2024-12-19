@@ -1,56 +1,53 @@
 <template>
   <Navbar />
-
   <div class="page-wrapper">
     <div class="content">
       <div class="row mb-3">
-        <div class="col-12 d-flex justify-content-end">
-          <button @click="toggleTransaction" :class="['btn', isTransactionOpen ? 'btn-danger' : 'btn-success']">
-            {{ isTransactionOpen ? 'Close Transaction' : 'Open Transaction' }}
+        <div class="col-6 d-flex justify-content-start">
+          <button class="rounded-3 px-2" @click="toggleTransaction" :class="['btn', isTransactionOpen ? 'btn-danger' : 'btn-success']">
+            {{ isTransactionOpen ? 'END TRANSACTION' : 'START TRANSACTION' }}
           </button>
         </div>
+        <div class="col-6 d-flex justify-content-end">
+          <button class="bg-success rounded-3 px-2 " @click="downloadSalesReport" ><font-awesome-icon icon="file-lines"/> PRINT SALES REPORT</button>
+        </div>
       </div>
-
       <div class="row">
       <!-- Total Items Sold -->
-
-      <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-widget w-100">
-          <div class="dash-widgetimg">
-            <span><img src="assets/img/icons/dash1.svg" alt="img" /></span>
+      <div class="col-xl-3 col-sm-6 col-12 d-flex ">
+        <div class="dash-widget w-100 border-2 ">
+          <div class="mx-3">
+            <span class=" text-success "><font-awesome-icon icon="wheat-awn" :size="'2x'" /></span>
           </div>
           <div class="dash-widgetcontent">
-            
             <h5>
-              <span class="counters">{{ totalItemsSold }}</span>
+              <span class="counters ">{{ totalItemsSold }}</span>
             </h5>
-            <h6>Total Items Sold</h6>
+            <h6 class=" text-success text-uppercase fw-bolder">Product Sold</h6>
           </div>
         </div>
       </div>
-
       <!-- Total Sales -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-widget dash1 w-100">
-          <div class="dash-widgetimg">
-            <span><img src="assets/img/icons/dash2.svg" alt="img" /></span>
+        <div class="dash-widget dash1 w-100 border-2">
+          <div class="mx-3">
+            <span  class="text-success"><font-awesome-icon icon="money-bill-1" :size="'2x'" /></span>
           </div>
           <div class="dash-widgetcontent">
-            <h5>
+            <h5 >
               <font-awesome-icon icon="fa-peso-sign" />
               <span class="counters">{{ totalSales.toFixed(2) }}</span>
             </h5>
-            <h6>Total Sales</h6>
+            <h6 class="text-success text-uppercase fw-bolder">PURCHASES</h6>
           </div>
         </div>
       </div>
-
       <!-- Total Profit -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
         <div class="dash-widget dash2 w-100">
-          <div class="dash-widgetimg">
-            <span>
-              <font-awesome-icon icon="fa-arrow-trend-up" :size="'2x'" style="color: #74C0FC;" />
+          <div class="mx-3">
+            <span class="text-success">
+              <font-awesome-icon icon="fa-arrow-trend-up" :size="'2x'"/>
             </span>
           </div>
           <div class="dash-widgetcontent">
@@ -58,76 +55,71 @@
               <font-awesome-icon icon="fa-peso-sign" />
               <span class="counters">{{ totalProfit.toFixed(2) }}</span>
             </h5>
-            <h6>Total Profit</h6>
+            <h6 class="text-success text-uppercase fw-bolder">INCOME</h6>
           </div>
         </div>
       </div>
-
       <!-- Total Lost -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
         <div class="dash-widget dash3 w-100">
-          <div class="dash-widgetimg">
-            <span>
-              <font-awesome-icon icon="fa-arrow-trend-down" :size="'2x'" style="color: #ee3a5e;" />
+          <div class="mx-3">
+            <span class="text-success">
+              <font-awesome-icon icon="fa-arrow-trend-down" :size="'2x'" />
             </span>
           </div>
           <div class="dash-widgetcontent">
-            <h5>
+            <h5 >
               <font-awesome-icon icon="fa-peso-sign" />
               <span class="counters">{{ totalLost.toFixed(2) }}</span>
             </h5>
-            <h6>Total Lost</h6>
+            <h6 class="text-success text-uppercase fw-bolder">LOST</h6>
           </div>
         </div>
       </div>
-
       <!-- Total Transactions -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-count">
+        <div class="dash-count bg-secondary">
           <div class="dash-counts">
             <h4>{{ totalTransactions }}</h4>
-            <h5>Transactions</h5>
+            <h5>TRANSACTIONS</h5>
           </div>
           <div class="dash-imgs">
             <font-awesome-icon icon="fa-handshake" />
           </div>
         </div>
       </div>
-
       <!-- Total Returns -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-count badge-bgprimary">
+        <div class="dash-count badge-bg">
           <div class="dash-counts">
             <h4>{{ totalReturnedTransactions }}</h4>
-            <h5>Returns</h5>
+            <h5>RETURNED ITEMS</h5>
           </div>
           <div class="dash-imgs">
             <font-awesome-icon icon="fa-reply" />
           </div>
         </div>
       </div>
-
       <!-- Total Purchase Invoice -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-count das2 bg-danger">
+        <div class="dash-count das2 " style="background: #F36F24;">
           <div class="dash-counts">
             <h4>{{ totalVoidedTransactions }}</h4>
-            <h5>Void Purchases</h5>
+            <h5>VOID SALES</h5>
           </div>
           <div class="dash-imgs">
             <font-awesome-icon icon="fa-ban" />
           </div>
         </div>
       </div>
-
       <!-- Completed Transactions -->
       <div class="col-xl-3 col-sm-6 col-12 d-flex">
-        <div class="dash-count das3">
-          <div class="dash-counts">
-            <h4>{{ totalCompletedTransactions }}</h4>
-            <h5>Completed transactions</h5>
+        <div class="dash-count das3"  style="background:#FCEE21;" >
+          <div class="dash-counts" >
+            <h4 class="text-dark">{{ totalCompletedTransactions }}</h4>
+            <h5 class="text-dark">SUCCESSFUL TRANSACTIONS</h5>
           </div>
-          <div class="dash-imgs">
+          <div class="dash-imgs text-dark" >
             <font-awesome-icon icon="fa-clipboard-check" />
           </div>
         </div>
@@ -138,10 +130,7 @@
         <div class="col-xl-7 col-sm-12 col-12 d-flex">
           <div class="card flex-fill">
             <div class="card-header d-flex justify-content-between align-items-center">
-              <h5 class="card-title mb-0">Purchase & Sales</h5>
               <div class="graph-sets">
-
-    
               </div>
             </div>
             <div class="card-body">
@@ -166,7 +155,7 @@
                 <table v-else class="table datanew">
             <thead>
               <tr>
-                <th>Transaction ID</th>
+                <th>Referece ID</th>
                 <th>Status</th>
                 <th>Date</th>
               </tr>
@@ -198,41 +187,8 @@
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title">Fast Moving Products</h4>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive dataview">
-            <table class="table dashboard-expired-products">
-              <thead>
-          <tr>
-            <th>SKU</th>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th>Sold</th>
-            <th>Quantity</th>
-            <th>Total Sales</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in products.slice(0, 5)" :key="product.sku">
-            <td>{{ product.sku }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price.toFixed(2) }}</td>
-            <td>{{ product.sales }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>{{ product.totalSales.toFixed(2) }}</td>
-          </tr>
-        </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
-  
 </template>
-
 <script>
 import { ref, onMounted, onBeforeUnmount,nextTick } from "vue";
 import Chart from "chart.js/auto";
@@ -240,8 +196,7 @@ import axios from "axios";
 import Navbar from "/src/components/Admin/Navbar.vue";
 import Swal from "sweetalert2";
 import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
-
-
+import { exportToCSV } from "@/utils/exportCSV";
 export default {
   components: {
     Navbar,
@@ -266,7 +221,6 @@ export default {
     const isLoading = ref(false);
     const transactions = ref([]);
     const products = ref([]);
-
     const getTransactions = async () => {
       loading.value = true;
       try {
@@ -284,7 +238,6 @@ export default {
         loading.value = false;
       }
     }
-
      const  getFastMovingProducts=  async () => {
       try {
         const response = await axios.get(`${apiURL}/get_fast_moving`); // Adjust API endpoint as necessary
@@ -293,78 +246,128 @@ export default {
         console.error('Error fetching fast-moving products:', error);
       }
     }
-    // Function to render the chart after data is fetched
     const renderChart = (salesData) => {
-      if (salesData.length > 0 && chartCanvas.value) {
-        const labels = salesData.map((data) => data._id); // Assuming '_id' as labels
-        const totalSalesData = salesData.map((data) => data.totalSales);
-        const totalProfitData = salesData.map((data) => data.totalProfit);
+  try {
+    // Check if data and canvas element are valid
+    if (!salesData || salesData.length === 0 || !chartCanvas.value) {
+      console.error("Invalid sales data or chart canvas is not available.");
+      return;
+    }
 
-        const ctx = chartCanvas.value.getContext("2d"); // Get the context for the canvas element
+    const labels = salesData.map((data) => data._id); // Assuming '_id' represents labels
+    const totalSalesData = salesData.map((data) => data.totalSales);
+    const totalProfitData = salesData.map((data) => data.totalProfit);
 
-        // Destroy existing chart instance before creating a new one
-        if (chartInstance) {
-          chartInstance.destroy();
-        }
+    const ctx = chartCanvas.value.getContext("2d");
 
-        // Initialize the chart with the provided data
-        chartInstance = new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: labels,
-            datasets: [
-              {
-                label: "Total Sales",
-                data: totalSalesData,
-                backgroundColor: "rgb(40, 199, 111)",
-                borderColor: "rgb(75, 192, 192)",
-                borderWidth: 1,
-              },
-              {
-                label: "Total Profit",
-                data: totalProfitData,
-                backgroundColor: "rgb(255, 77, 77)",
-                borderColor: "rgb(255, 99, 132)",
-                borderWidth: 1,
-              },
-            ],
+    // Destroy existing chart instance before creating a new one
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+
+    // Create a new Chart instance
+    chartInstance = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Total Sales",
+            data: totalSalesData,
+            backgroundColor: "rgba(40, 199, 111, 0.2)", // Translucent background
+            borderColor: "rgb(40, 199, 111)",
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4, // Smooth curves
           },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                position: "top",
-              },
-              tooltip: {
-                enabled: true,
-              },
-            },
-            scales: {
-              x: {
-                title: {
-                  display: true,
-                  text: "Dates",
-                },
-              },
-              y: {
-                title: {
-                  display: true,
-                  text: "Values",
-                },
-                beginAtZero: true,
+          {
+            label: "Total Profit",
+            data: totalProfitData,
+            backgroundColor: "rgba(255, 77, 77, 0.2)",
+            borderColor: "rgb(255, 77, 77)",
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4, // Smooth curves
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              font: {
+                size: 14,
               },
             },
           },
-        });
-      }
-    };
+          tooltip: {
+            enabled: true,
+            callbacks: {
+              label: function (tooltipItem) {
+                return `${tooltipItem.dataset.label}: ₱${tooltipItem.raw.toLocaleString()}`;
+              },
+            },
+          },
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Dates",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Values",
+              font: {
+                size: 14,
+                weight: "bold",
+              },
+            },
+            grid: {
+              color: "rgba(200, 200, 200, 0.2)", // Subtle gridlines
+            },
+            ticks: {
+              callback: function (value) {
+                return `₱${value.toLocaleString()}`;
+              },
+            },
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error rendering chart:", error);
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to render the chart",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+  }
+};
 
     // Fetch transaction state (open or closed)
     const updateTransactionState = async () => {
   try {
     const response = await axios.get(`${apiURL}/transaction_state`);
     if (response.data.success) {
-      isTransactionOpen.value = response.data.isOpen;  // This should reflect the correct state
+      isTransactionOpen.value = response.data.isOpen;
+      const responses = await axios.get("http://localhost:4000/api/sales_data");
+      const salesData = responses.data.data;
+      exportToCSV(salesData, `product_report`);
     } else {
       console.error("Failed to fetch transaction state.");
     }
@@ -378,7 +381,6 @@ export default {
     });
   }
 };
-
 const toggleTransaction = async () => {
   const action = isTransactionOpen.value ? "close" : "open";
   try {
@@ -394,7 +396,7 @@ const toggleTransaction = async () => {
     if (result.isConfirmed) {
       const endpoint = `${action}_transaction`;
       const response = await axios.post(`${apiURL}/${endpoint}`);
-      await axios.post(`${apiURL}/export`)
+   
       if (response.data.success) {
         isTransactionOpen.value = !isTransactionOpen.value;
         await Swal.fire({
@@ -437,8 +439,6 @@ const toggleTransaction = async () => {
     });
   }
 };
-
-
 const fetchStatistics = async () => {
   try {
     isLoading.value = true;
@@ -460,7 +460,6 @@ const fetchStatistics = async () => {
     } else {
       console.error("Failed to fetch dashboard statistics");
     }
-
     // Fetch the sales data for the chart
     const chartResponse = await axios.get(`${apiURL}/get_sales`);
     if (chartResponse.data.success) {
@@ -480,8 +479,21 @@ const fetchStatistics = async () => {
   } finally {
     isLoading.value = false;
   }
+}; // On component mount, fetch initial data
+
+const downloadSalesReport = async () => {
+  try {
+    const response = await axios.get("http://localhost:4000/api/sales_data");
+    if (response.data.success) {
+      const salesData = response.data.data;
+      exportToCSV(salesData, `product_report`);
+    } else {
+      console.error("Failed to fetch sales data:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Error fetching sales data:", error);
+  }
 };
-    // On component mount, fetch initial data
     onMounted(async () => {
       await updateTransactionState();
       await fetchStatistics();
@@ -511,7 +523,8 @@ const fetchStatistics = async () => {
       toggleTransaction,
       getTransactions,
       transactions,
-      products
+      products,
+      downloadSalesReport
     };
   },
 };

@@ -16,7 +16,11 @@
       <ul class="nav user-menu">
         <li class="nav-item nav-searchinputs"></li>
         <li class="nav-item dropdown has-arrow main-drop">
-          <a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+          <a
+            href="javascript:void(0);"
+            class="dropdown-toggle nav-link userset"
+            data-bs-toggle="dropdown"
+          >
             <span class="user-info">
               <span class="user-detail">
                 <span class="user-name">{{ user }}</span>
@@ -32,16 +36,26 @@
                   <h5>{{ role }}</h5>
                 </div>
               </div>
-              <a class="dropdown-item logout pb-0" href="#" @click="logout"><img src="assets/img/icons/log-out.svg"
-                  class="me-2" alt="img" />Logout</a>
+              <a class="dropdown-item logout pb-0" href="#" @click="logout"
+                ><img
+                  src="assets/img/icons/log-out.svg"
+                  class="me-2"
+                  alt="img"
+                />Logout</a
+              >
             </div>
           </div>
         </li>
       </ul>
 
       <div class="dropdown mobile-user-menu">
-        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+        <a
+          href="javascript:void(0);"
+          class="nav-link dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          ><i class="fa fa-ellipsis-v"></i
+        ></a>
         <div class="dropdown-menu dropdown-menu-right">
           <a class="dropdown-item" href="general-settings.html">Settings</a>
           <a class="dropdown-item" href="/">Logout</a>
@@ -104,8 +118,9 @@
                     <i data-feather="codepen"></i><span>Category</span>
                   </router-link>
                 </li>
-              </ul>           
+              </ul>
             </li>
+
             <li class="submenu-open">
               <h6 class="submenu-hdr">Sales</h6>
               <ul>
@@ -173,7 +188,6 @@
       </div>
     </div>
   </div>
- 
 </template>
 
 <script>

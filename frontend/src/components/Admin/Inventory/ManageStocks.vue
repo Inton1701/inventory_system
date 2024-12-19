@@ -8,21 +8,7 @@
           <h4>Manage Stocks</h4>
         </div>
         <ul class="table-top-head low-stock-top-head">
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"
-              ><img src="/assets/img/icons/pdf.svg" alt="img"
-            /></a>
-          </li>
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"
-              ><img src="/assets/img/icons/excel.svg" alt="img"
-            /></a>
-          </li>
-          <li>
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh"
-              ><i data-feather="rotate-ccw" class="feather-rotate-ccw"></i
-            ></a>
-          </li>
+ 
         </ul>
       </div>
       <div class="table-tab">

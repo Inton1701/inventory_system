@@ -30,7 +30,7 @@ const { generatePDFReceipt } = require("../controllers/ReceiptController");
 const user = require("../controllers/userController");
 const settings = require("../controllers/settingsController");
 const printer = require("../controllers/ReceiptController");
-
+const sales= require("../controllers/salesController")
 router.route("/api/test_print").post(printer.testPrint);
 
 router.route("/api/settings").get(settings.getSettings);
@@ -43,6 +43,7 @@ router
   .route("/api/restoreDefaultConfigSettings")
   .post(settings.restoreDefaultConfigSettings);
 
+router.route("/api/sales_data").get(sales.getSalesData);
 router.route("/api/get_all_users").get(user.getAllUsers);
 router.route("/api/add_user").post(upload.single("image"), user.addUser);
 router.route("/api/get_user/:id").get(user.getUser);
