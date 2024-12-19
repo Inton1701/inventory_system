@@ -16,6 +16,7 @@
       <div class="content pos-design p-0">
         <div class="row align-items-start pos-wrapper">
           <div class="col-md-3 col-lg-2">
+          <div class="col-md-3 col-lg-2">
             <div class="category-list">
               <h2 class="text-center py-2">CATEGORIES</h2>
               <ul class="list-group text-center overflow-auto"
@@ -80,7 +81,6 @@
                   <button class="btn btn-info px-4 py-1 mx-1" @click="openEditCartModal">EDIT</button>
                   <button class="btn btn-danger px-4 py-1 mx-1" @click="cancelTransaction" id="del-btn">CANCEL</button>
                 </span>
-
               </div>
               <div class="product-added">
                 <div class="product-wrap">
@@ -159,12 +159,23 @@
 
 
   <!-- Modal for Payment -->
-  <div class="modal fade" id="payment-modal" tabindex="-1" aria-labelledby="payment-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="payment-modal"
+    tabindex="-1"
+    aria-labelledby="payment-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="payment-modalLabel">Payment</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -172,7 +183,9 @@
             <input type="number" id="payment" class="form-control" v-model="clientPayment" min="1"
               @keydown.enter="processPayment" placeholder="Enter payment amount" />
           </div>
-          <p v-if="paymentError.message" class="text-danger">{{ paymentError.message }}</p>
+          <p v-if="paymentError.message" class="text-danger">
+            {{ paymentError.message }}
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CANCEL</button>
@@ -182,7 +195,13 @@
     </div>
   </div>
 
-  <div class="modal fade" id="return-modal" tabindex="-1" aria-labelledby="return-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="return-modal"
+    tabindex="-1"
+    aria-labelledby="return-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -190,9 +209,16 @@
           <button type="button" class="btn-close" id="return-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <input v-model="transactionId" class="form-control" type="text" placeholder="Transaction ID"
-            @keydown.enter="fetchTransactionItems" />
-          <p v-if="transactionError" class="text-danger">{{ transactionError }}</p>
+          <input
+            v-model="transactionId"
+            class="form-control"
+            type="text"
+            placeholder="Transaction ID"
+            @keydown.enter="fetchTransactionItems"
+          />
+          <p v-if="transactionError" class="text-danger">
+            {{ transactionError }}
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
@@ -257,13 +283,25 @@
 </div>
 
   <!-- Void Transaction Modal -->
-  <div class="modal fade" id="void-transaction-modal" tabindex="-1" aria-labelledby="voidTransactionModalLabel"
-    aria-hidden="true">
+  <div
+    class="modal fade"
+    id="void-transaction-modal"
+    tabindex="-1"
+    aria-labelledby="voidTransactionModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="voidTransactionModalLabel">Void Transaction</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="voidTransactionModalLabel">
+            Void Transaction
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <form @submit.prevent="processVoid">
@@ -272,7 +310,9 @@
               <input type="text" id="transaction-id" class="form-control" v-model="transactionId"
                 placeholder="Enter Transaction ID" required>
             </div>
-            <p v-if="transactionError" class="text-danger">{{ transactionError }}</p>
+            <p v-if="transactionError" class="text-danger">
+              {{ transactionError }}
+            </p>
           </form>
         </div>
         <div class="modal-footer">
@@ -283,13 +323,23 @@
     </div>
   </div>
 
-
-  <div class="modal fade" id="edit-cart-modal" tabindex="-1" aria-labelledby="edit-cart-modalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="edit-cart-modal"
+    tabindex="-1"
+    aria-labelledby="edit-cart-modalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="edit-cart-modalLabel">Edit Cart Items</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <table class="table" tabindex="0" @keydown="handleCartKeyNavigation">
@@ -306,12 +356,22 @@
               <tr v-for="(item, index) in cart" :key="item._id">
                 <td>{{ item.name }}</td>
                 <td>
-                  <input type="number" v-model="item.quantity" min="1" @input="validateCartQuantity(item)" />
+                  <input
+                    type="number"
+                    v-model="item.quantity"
+                    min="1"
+                    @input="validateCartQuantity(item)"
+                  />
                 </td>
                 <td>{{ item.price }}</td>
                 <td>{{ item.price * item.quantity }}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm" @click="removeCartItem(index)">Delete</button>
+                  <button
+                    class="btn btn-danger btn-sm"
+                    @click="removeCartItem(index)"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -323,22 +383,21 @@
       </div>
     </div>
   </div>
-
 </template>
 <script>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
-import { useRouter } from 'vue-router';
-import { modalController } from '@/utils/modalController';
-import axios from 'axios';
-import 'sweetalert2'
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import { useRouter } from "vue-router";
+import { modalController } from "@/utils/modalController";
+import axios from "axios";
+import "sweetalert2";
 
 export default {
   setup() {
     const router = useRouter();
     const apiURL = process.env.VUE_APP_URL;
     const imgURL = process.env.VUE_APP_IMAGE_URL;
-    const selectedCategory = ref('all');
-    const barcode = ref('');
+    const selectedCategory = ref("all");
+    const barcode = ref("");
     const barcodeInput = ref(null);
     const cart = ref([]);
     const categories = ref([]);
@@ -354,7 +413,7 @@ export default {
     const change = ref(null);
     const clientPayment = ref(null);
     const products = ref([]);
-    const transactionId = ref('');
+    const transactionId = ref("");
     const transactionError = ref(null);
     const returnItems = ref([]);
     const focusedIndex = ref(0);
@@ -393,7 +452,9 @@ export default {
     const getProductsByCategory = async (categoryName) => {
       try {
         if (await checkState()) return;
-        const response = await axios.get(`${apiURL}/get_products_by_category/${categoryName}`);
+        const response = await axios.get(
+          `${apiURL}/get_products_by_category/${categoryName}`
+        );
         products.value = response.data.products;
       } catch (error) {
         console.error(error);
@@ -421,18 +482,25 @@ export default {
     };
     const filteredCategories = computed(() => {
       // Filter products based on the selected category
-      if (selectedCategory.value === 'all') {
+      if (selectedCategory.value === "all") {
         return categories.value;
       }
-      return categories.value.filter(category => category.name === selectedCategory.value);
+      return categories.value.filter(
+        (category) => category.name === selectedCategory.value
+      );
     });
-
 
     const addProduct = async (product = null) => {
       try {
         if (await checkState()) return;
 
         if (isNewTransaction.value) {
+          cart.value = []; // Clear the cart
+          subtotal.value = 0;
+          discount.value = 0;
+          change.value = null;
+          isNewTransaction.value = false; // Set to false after starting a new transaction
+        }
           cart.value = []; // Clear the cart
           subtotal.value = 0;
           discount.value = 0;
@@ -448,8 +516,10 @@ export default {
             const sku = barcode.value.trim().substring(1);
             const lookup = await axios.get(`${apiURL}/get_product_info/${sku}`);
             if (lookup.data.success) {
-              product = lookup.data.product
+              product = lookup.data.product;
               Swal.fire({
+                title: product.name,
+                html: `
                 title: product.name,
                 html: `
             <div style="display: flex; justify-content: space-between;">
@@ -471,19 +541,23 @@ export default {
               barcodeError.value.message = null;
               return;
             } else {
-              barcodeError.value.message = lookup.data.message || "Product not found.";
+              barcodeError.value.message =
+                lookup.data.message || "Product not found.";
               return;
             }
 
           }
 
-          const response = await axios.get(`${apiURL}/get_product_info/${barcode.value.trim()}`);
+          const response = await axios.get(
+            `${apiURL}/get_product_info/${barcode.value.trim()}`
+          );
           if (response.data.success) {
             product = response.data.product; // Assign the fetched product
 
             barcodeError.value.message = null;
           } else {
-            barcodeError.value.message = response.data.message || "Product not found.";
+            barcodeError.value.message =
+              response.data.message || "Product not found.";
             return;
           }
         }
@@ -493,7 +567,9 @@ export default {
         stockQuantity.value = product.quantity;
 
         // Check if the product is already in the cart
-        const existingItem = cart.value.find((item) => item._id === product._id);
+        const existingItem = cart.value.find(
+          (item) => item._id === product._id
+        );
 
         if (existingItem) {
           // Increment quantity if product is already in the cart
@@ -515,40 +591,43 @@ export default {
         updateSubtotal(); // Update the subtotal after adding the product
       } catch (error) {
         console.error("Error adding product:", error);
-        barcodeError.value.message = "An error occurred while fetching the product.";
+        barcodeError.value.message =
+          "An error occurred while fetching the product.";
       } finally {
         barcode.value = ""; // Clear the barcode input
       }
     };
 
-
     const updateSubtotal = () => {
-      subtotal.value = cart.value.reduce((sum, item) => sum + item.quantity * item.price, 0);
+      subtotal.value = cart.value.reduce(
+        (sum, item) => sum + item.quantity * item.price,
+        0
+      );
     };
 
     const handleKeydown = (event) => {
       switch (event.key) {
-        case 'F1':
+        case "F1":
           event.preventDefault();
           openPaymentModal();
           break;
-        case 'F2':
+        case "F2":
           event.preventDefault();
           openVoidModal(); // open return modal
           break;
-        case 'F3':
+        case "F3":
           event.preventDefault();
           openReturnModal(); // open return modal
           break;
-        case 'q':
+        case "q":
           event.preventDefault();
           openUpdateQuantityModal(); // Open quantity modal
           break;
-        case 'Escape':
+        case "Escape":
           // Refocus on the barcode input
           if (barcodeInput.value) {
             barcodeInput.value.focus();
-            transactionId.value = ''; // Clear transaction ID
+            transactionId.value = ""; // Clear transaction ID
             returnItems.value = []; // Clear previously selected items
             transactionError.value = null; // Clear any previous errors
           }
@@ -556,7 +635,7 @@ export default {
         case 'l': // Check for Ctrl + L
           if (event.ctrlKey) {
             event.preventDefault();
-            router.push('/lockscreen'); // Redirect to lock screen
+            router.push("/lockscreen"); // Redirect to lock screen
           }
           break;
         default:
@@ -564,26 +643,26 @@ export default {
       }
     };
     const resetTransactions = () => {
-      transactionId.value = '';
+      transactionId.value = "";
       returnItems.value = [];
       transactionError.value = null;
-    }
+    };
 
+    const openPaymentModal = async () => {
     const openPaymentModal = async () => {
       if (await checkState()) return;
       if (total.value > 0) {
         resetTransactions();
-        modalController.show('payment-modal');
-        modalController.focus('payment-modal');
+        modalController.show("payment-modal");
+        modalController.focus("payment-modal");
       }
-
     };
 
     const openReturnModal = async () => {
       if (await checkState()) return;
       resetTransactions();
-      modalController.show('return-modal');
-      modalController.focus('return-modal');
+      modalController.show("return-modal");
+      modalController.focus("return-modal");
       addNavigationListener();
     };
     const addNavigationListener = () => {
@@ -595,10 +674,11 @@ export default {
     };
 
     const openVoidModal = async () => {
+    const openVoidModal = async () => {
       if (await checkState()) return;
       resetTransactions();
-      modalController.show('void-transaction-modal');
-      modalController.focus('void-transaction-modal');
+      modalController.show("void-transaction-modal");
+      modalController.focus("void-transaction-modal");
     };
 
 
@@ -606,24 +686,23 @@ export default {
     const handleModalKeydown = async (event) => {
       if (await checkState()) return;
       // Check for Enter key
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         event.preventDefault(); // Prevent default form submission
         updateProductQuantity(); // Trigger the update function
       }
 
       // Check for Escape key
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         event.preventDefault(); // Prevent default behavior
-        modalController.hide('update-quantity-modal')
+        modalController.hide("update-quantity-modal");
       }
-
     };
 
     const openUpdateQuantityModal = () => {
       if (lastAddedProduct.value) {
         // Open modal to update quantity
-        modalController.show('update-quantity-modal');
-        modalController.focus('update-quantity-modal');
+        modalController.show("update-quantity-modal");
+        modalController.focus("update-quantity-modal");
       } else {
         barcodeError.value.message = "No product in cart yet.";
       }
@@ -657,7 +736,10 @@ export default {
         };
 
         // Send transaction data to the backend
-        const response = await axios.post(`${apiURL}/commit_transaction`, transactionData);
+        const response = await axios.post(
+          `${apiURL}/commit_transaction`,
+          transactionData
+        );
 
         if (response.data.success) {
           // Backend transaction was successful
@@ -666,81 +748,77 @@ export default {
           // Calculate change
           change.value = (clientPayment.value - total.value).toFixed(2);
 
-
           clientPayment.value = null;
           paymentError.value.message = null;
 
           // Notify the user of successful payment (optional)
           Swal.fire({
-            title: 'Success!',
-            text: 'Transaction successful.',
-            icon: 'success',
-            timer: 1500, // 
-            showConfirmButton: false // Optional: Hide the confirm button
+            title: "Success!",
+            text: "Transaction successful.",
+            icon: "success",
+            timer: 1500, //
+            showConfirmButton: false, // Optional: Hide the confirm button
           });
 
           // Close the payment modal
-          modalController.hide('payment-modal')
+          modalController.hide("payment-modal");
           isNewTransaction.value = true;
-
         } else {
           // Backend returned an error
-          paymentError.value.message = response.data.message || "Failed to process transaction.";
+          paymentError.value.message =
+            response.data.message || "Failed to process transaction.";
           console.error("Transaction failed:", response.data.message);
         }
       } catch (error) {
         // Handle network or server errors
         console.error("Error processing payment:", error);
-        paymentError.value.message = "An error occurred while processing the payment. Please try again.";
+        paymentError.value.message =
+          "An error occurred while processing the payment. Please try again.";
       }
     };
-
 
     const processVoid = async () => {
       try {
         if (await checkState()) return;
         const response = await axios.post(`${apiURL}/void_transaction`, {
           transactionId: transactionId.value,
-          employee: 'JohnDoe' // Replace with actual employee information
+          employee: "JohnDoe", // Replace with actual employee information
         });
 
         if (response.data.success) {
           // Display success message
           Swal.fire({
-            title: 'Voided!',
-            text: 'Transaction has been successfully voided.',
-            icon: 'success',
+            title: "Voided!",
+            text: "Transaction has been successfully voided.",
+            icon: "success",
             timer: 1500,
-            showConfirmButton: false
+            showConfirmButton: false,
           });
 
           // Clear transaction ID and close the modal
           resetTransactions();
-          modalController.hide('void-transaction-modal');
+          modalController.hide("void-transaction-modal");
         } else {
           // Handle server error messages
           Swal.fire({
-            title: 'Error',
-            text: response.data.message || 'Failed to void the transaction.',
-            icon: 'error',
+            title: "Error",
+            text: response.data.message || "Failed to void the transaction.",
+            icon: "error",
             timer: 2000,
-            showConfirmButton: false
-
+            showConfirmButton: false,
           });
         }
       } catch (error) {
         // Handle unexpected errors
         Swal.fire({
-          title: 'Error',
+          title: "Error",
           text: `An error occurred: ${error.message}`,
-          icon: 'error',
+          icon: "error",
           timer: 2000,
-          showConfirmButton: false
-
+          showConfirmButton: false,
         });
       }
     };
-
 
     const updateProductQuantity = async () => {
       if (await checkState()) return;
@@ -751,14 +829,16 @@ export default {
         }
 
         // Update quantity in cart
-        const cartItem = cart.value.find((item) => item._id === lastAddedProduct.value._id);
+        const cartItem = cart.value.find(
+          (item) => item._id === lastAddedProduct.value._id
+        );
         if (cartItem) {
           cartItem.quantity = newQuantity.value;
         }
 
         updateSubtotal();
 
-        modalController.hide('update-quantity-modal');
+        modalController.hide("update-quantity-modal");
         newQuantity.value = 1;
         quantityError.value = null;
 
@@ -770,19 +850,21 @@ export default {
     };
     const fetchTransactionItems = async () => {
       try {
-        modalController.hide('return-modal');
+        modalController.hide("return-modal");
         removeNavigationListener();
 
         // Fetch transaction items from the API
-        const response = await axios.get(`${apiURL}/get_transaction_items/${transactionId.value}`);
+        const response = await axios.get(
+          `${apiURL}/get_transaction_items/${transactionId.value}`
+        );
         const { success, cart, totalAmount } = response.data;
 
         if (success && cart && Array.isArray(cart)) {
           // Process the cart items
-          console.log('Transaction cart items:', cart);
+          console.log("Transaction cart items:", cart);
 
           // Populate the returnItems array with the fetched items
-          returnItems.value = cart.map(item => ({
+          returnItems.value = cart.map((item) => ({
             _id: item._id,
             sku: item.sku,
             name: item.name,
@@ -792,37 +874,44 @@ export default {
             returnQuantity: 0, // Initialize return quantity to 0
           }));
 
-          modalController.show('select-return-items-modal')
+          modalController.show("select-return-items-modal");
         } else {
-          console.error('Cart is empty or response structure is incorrect');
+          console.error("Cart is empty or response structure is incorrect");
         }
       } catch (error) {
-        console.error('Error fetching transaction items:', error);
+        console.error("Error fetching transaction items:", error);
       }
     };
 
     const processReturn = async () => {
       try {
         if (await checkState()) return;
-        const itemsToReturn = returnItems.value.filter(item => item.selected && item.returnQuantity > 0);
+        const itemsToReturn = returnItems.value.filter(
+          (item) => item.selected && item.returnQuantity > 0
+        );
 
         if (itemsToReturn.length === 0) {
-          transactionError.value = 'Please select at least one item to return.';
+          transactionError.value = "Please select at least one item to return.";
           return;
         }
 
         // Await the axios call to get the response properly
-        const response = await axios.post(`${apiURL}/return_transaction/${transactionId.value}`, {
-          returnedItems: itemsToReturn,
-          employee: localStorage.getItem("user")
-        });
+        const response = await axios.post(
+          `${apiURL}/return_transaction/${transactionId.value}`,
+          {
+            returnedItems: itemsToReturn,
+            employee: localStorage.getItem("user"),
+          }
+        );
 
         console.log(response.data); // This will now log the actual response data
 
         if (response.data.success) {
           // Update stock and cart
-          itemsToReturn.forEach(item => {
-            const cartItem = cart.value.find(cartItem => cartItem._id === item._id);
+          itemsToReturn.forEach((item) => {
+            const cartItem = cart.value.find(
+              (cartItem) => cartItem._id === item._id
+            );
             if (cartItem) {
               cartItem.quantity -= item.returnQuantity;
               if (cartItem.quantity <= 0) {
@@ -834,35 +923,32 @@ export default {
 
           // Notify the user of successful payment (optional)
           Swal.fire({
-            title: 'Returned!',
-            text: 'Transaction successful.',
-            icon: 'success',
-            timer: 1500, // 
-            showConfirmButton: false // Optional: Hide the confirm button
+            title: "Returned!",
+            text: "Transaction successful.",
+            icon: "success",
+            timer: 1500, //
+            showConfirmButton: false, // Optional: Hide the confirm button
           });
 
-          modalController.hide('select-return-items-modal')
+          modalController.hide("select-return-items-modal");
           // Clear transaction ID input
-
         } else {
           Swal.fire({
-            title: 'Error',
-            text: response.data.message || 'Failed to process the return.',
-            icon: 'error',
+            title: "Error",
+            text: response.data.message || "Failed to process the return.",
+            icon: "error",
             timer: 2000,
-            showConfirmButton: false
-
+            showConfirmButton: false,
           });
         }
       } catch (error) {
-        console.error('Error processing return:', error);
+        console.error("Error processing return:", error);
         Swal.fire({
-          title: 'Error',
-          text: 'An error occurred while processing the return. Please try again.',
-          icon: 'error',
+          title: "Error",
+          text: "An error occurred while processing the return. Please try again.",
+          icon: "error",
           timer: 2000,
-          showConfirmButton: false
-
+          showConfirmButton: false,
         });
       }
     };
@@ -871,10 +957,7 @@ export default {
       if (item.returnQuantity > item.quantity) {
         item.returnQuantity = item.quantity; // Reset to maximum allowed
       }
-    }
-
-
-
+    };
 
     const handleKeyNavigation = (event) => {
       const items = returnItems.value; // Access the return items
@@ -883,9 +966,10 @@ export default {
       if (event.key === "ArrowDown" && focusedIndex.value < items.length - 1) {
         event.preventDefault(); // Prevent scrolling
         focusedIndex.value = (focusedIndex.value + 1) % items.length; // Move focus down
-      } else if (event.key === 'ArrowUp' && focusedIndex.value > 0) {
+      } else if (event.key === "ArrowUp" && focusedIndex.value > 0) {
         event.preventDefault(); // Prevent scrolling
-        focusedIndex.value = (focusedIndex.value - 1 + items.length) % items.length; // Move focus up
+        focusedIndex.value =
+          (focusedIndex.value - 1 + items.length) % items.length; // Move focus up
       } else if (event.key === " ") {
         event.preventDefault(); // Prevent scrolling
         const currentItem = items[focusedIndex.value];
@@ -904,7 +988,9 @@ export default {
       }
 
       // Trigger autofocus on the input when moving focus
-      const focusedInput = document.querySelector(`#select-return-items-modal .focused input[type="number"]`);
+      const focusedInput = document.querySelector(
+        `#select-return-items-modal .focused input[type="number"]`
+      );
       if (focusedInput) {
         focusedInput.focus();
       }
@@ -921,7 +1007,18 @@ export default {
     const handleCartKeyNavigation = (event) => {
       const items = cart.value; // Access the cart items
       if (!items || items.length === 0) return; // Exit if no items are present
+    // Handle key navigation and actions in the cart modal
+    const handleCartKeyNavigation = (event) => {
+      const items = cart.value; // Access the cart items
+      if (!items || items.length === 0) return; // Exit if no items are present
 
+      switch (event.key) {
+        case "ArrowDown":
+          if (focusedCartIndex.value < items.length - 1) {
+            event.preventDefault(); // Prevent scrolling
+            focusedCartIndex.value++;
+          }
+          break;
       switch (event.key) {
         case "ArrowDown":
           if (focusedCartIndex.value < items.length - 1) {
@@ -936,7 +1033,17 @@ export default {
             focusedCartIndex.value--;
           }
           break;
+        case "ArrowUp":
+          if (focusedCartIndex.value > 0) {
+            event.preventDefault(); // Prevent scrolling
+            focusedCartIndex.value--;
+          }
+          break;
 
+        case "Delete":
+          event.preventDefault(); // Prevent default behavior
+          removeCartItem(focusedCartIndex.value); // Delete the focused item
+          break;
         case "Delete":
           event.preventDefault(); // Prevent default behavior
           removeCartItem(focusedCartIndex.value); // Delete the focused item
@@ -947,11 +1054,27 @@ export default {
           // Optionally trigger saving the changes if Enter is pressed
           saveCartChanges();
           break;
+        case "Enter":
+          event.preventDefault(); // Prevent default behavior
+          // Optionally trigger saving the changes if Enter is pressed
+          saveCartChanges();
+          break;
 
         default:
           break;
       }
+        default:
+          break;
+      }
 
+      // Trigger autofocus on the input of the focused item
+      const focusedInput = document.querySelector(
+        `#edit-cart-modal .focused input[type="number"]`
+      );
+      if (focusedInput) {
+        focusedInput.focus();
+      }
+    };
       // Trigger autofocus on the input of the focused item
       const focusedInput = document.querySelector(
         `#edit-cart-modal .focused input[type="number"]`
@@ -969,11 +1092,25 @@ export default {
       }
       updateSubtotal(); // Update the subtotal after removing an item
     };
+    // Remove an item from the cart
+    const removeCartItem = (index) => {
+      cart.value.splice(index, 1); // Remove the item at the specified index
+      if (focusedCartIndex.value >= cart.value.length) {
+        focusedCartIndex.value = cart.value.length - 1; // Adjust focus index
+      }
+      updateSubtotal(); // Update the subtotal after removing an item
+    };
 
     // Save changes to the cart
     const saveCartChanges = () => {
       cart.value = cart.value.filter((item) => item.quantity > 0);
+    // Save changes to the cart
+    const saveCartChanges = () => {
+      cart.value = cart.value.filter((item) => item.quantity > 0);
 
+      updateSubtotal(); // Update subtotal
+      modalController.hide("edit-cart-modal"); // Close modal
+    };
       updateSubtotal(); // Update subtotal
       modalController.hide("edit-cart-modal"); // Close modal
     };
@@ -1041,6 +1178,11 @@ export default {
         const response = await axios.get(`${apiURL}/transaction_state`);
         if (response.data.success) {
           isTransactionOpen.value = response.data.isOpen;
+    const checkState = async () => {
+      try {
+        const response = await axios.get(`${apiURL}/transaction_state`);
+        if (response.data.success) {
+          isTransactionOpen.value = response.data.isOpen;
 
           if (isTransactionOpen.value === false) {
             Swal.fire({
@@ -1069,12 +1211,29 @@ export default {
         return false; // Ensure a return value in case of error
       }
     };
+          return false; // Return false if the transaction is open
+        } else {
+          console.error("Failed to fetch transaction state.");
+          return false; // Ensure a return value in case of failure
+        }
+      } catch (error) {
+        console.error("Error fetching transaction state:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to get transaction state",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        return false; // Ensure a return value in case of error
+      }
+    };
 
     const logout = () => {
+    const logout = () => {
       Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You will be logged out of your account.",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
         confirmButtonText: 'Yes, logout!',
         cancelButtonText: 'Cancel'
@@ -1129,12 +1288,12 @@ export default {
         barcodeInput.value.focus();
       }
 
-      window.addEventListener('keydown', handleKeydown); // Listen to keydown events
+      window.addEventListener("keydown", handleKeydown); // Listen to keydown events
       window.addEventListener("keydown", handleCartKeyNavigation);
     });
 
     onBeforeUnmount(() => {
-      window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener("keydown", handleKeydown);
       window.removeEventListener("keydown", handleCartKeyNavigation);
     });
 
@@ -1190,8 +1349,6 @@ export default {
   },
 };
 </script>
-
-
 
 <style scoped>
 .focused {
@@ -1297,7 +1454,7 @@ export default {
 .list-group-item.active {
   background-color: #fff;
   /* Green background for active list item */
-  border-color: #22A95E;
+  border-color: #22a95e;
   /* Optional: Match border with the active color */
 }
 
@@ -1328,7 +1485,7 @@ export default {
   color: white;
   padding: 5px 8px;
   border-radius: 4px;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 

@@ -1,63 +1,64 @@
 <template>
-    <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-5">
-          <div class="card shadow-lg border-0 rounded">
-            <div class="text-center mt-3">
-              <img
-                src="/img/logo.png"
-                alt="Logo"
-                class="img-fluid "
-                style="width: 300px; height: 100px;"
-              />
-            </div>
-            <div class="card-header text-center  text-white">
-              <h4 class="m-0">Welcome Back</h4>
-            </div>
-            <div class="card-body">
-              <form @submit.prevent="login">
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email Address</label>
-                  <input
-                    type="email"
-                    class="form-control form-control-lg"
-                    id="email"
-                    v-model="email"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-                <div class="mb-3 pass-group">
-                  <label for="password" class="form-label">Password</label>
-                  <input
-                     :type="isPasswordVisible ? 'text' : 'password'" 
-                    class="form-control form-control-lg"
-                    id="password"
-                    v-model="password"
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <font-awesome-icon :icon="isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'" @click="togglePassword()"
-                  class="toggle-password fa-xs mt-3" style="font-size: 8px;" />
-                </div>
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary btn-lg">
-                    Login
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="card-footer text-center text-muted">
-              <small>Powered By POSExpress</small>
-            </div>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-lg border-0 rounded">
+          <div class="text-center mt-3">
+            <img
+              src="/img/logo.png"
+              alt="Logo"
+              class="img-fluid"
+              style="width: 300px; height: 100px"
+            />
+          </div>
+          <div class="card-header text-center text-white">
+            <h4 class="m-0">Welcome Back</h4>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="login">
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control form-control-lg"
+                  id="email"
+                  v-model="email"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="mb-3 pass-group">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  :type="isPasswordVisible ? 'text' : 'password'"
+                  class="form-control form-control-lg"
+                  id="password"
+                  v-model="password"
+                  placeholder="Enter your password"
+                  required
+                />
+                <font-awesome-icon
+                  :icon="isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'"
+                  @click="togglePassword()"
+                  class="toggle-password fa-xs mt-3"
+                  style="font-size: 8px"
+                />
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer text-center text-muted">
+            <small>Powered By POSExpress</small>
           </div>
         </div>
       </div>
     </div>
-  </template>
-
-
-
+  </div>
+</template>
 
   <script>
   import { ref } from "vue";
