@@ -220,7 +220,6 @@ const product = {
 
       // Create a history entry for tracking stock changes
       await History.create({
-        sku: product.sku,
         product: product.name,
         prevStock: prevStock,
         change: Number(entryValue),

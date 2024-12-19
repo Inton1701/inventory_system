@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 const stockHistorySchema = new mongoose.Schema({
-    sku:{
-        type: String,
-        required: true
-    },
+
     product:{
         type: String,
         required: true

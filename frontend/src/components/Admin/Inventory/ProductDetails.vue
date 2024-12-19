@@ -5,18 +5,14 @@
     <div class="content">
       <div class="page-header">
         <div class="page-title">
-          <h4>Product Details</h4>
-          <h6>Full details of a product</h6>
+          <h4>Product Information</h4>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-8 col-sm-12">
           <div class="card" v-if="product">
             <div class="card-body">
-              <div class="row">
-                <Barcode ref="barcodeRef" :sku="product.sku" :productName="product.name" />
-                <a class="printimg" @click="triggerDownloadBarcode"></a>
-              </div>
+  
               <div class="productdetails">
                 <ul class="product-bar">
                   <li>
@@ -27,33 +23,14 @@
                     <h4>Category</h4>
                     <h6>{{ product.category || 'None' }}</h6>
                   </li>
+    
                   <li>
-                    <h4>Sub Category</h4>
-                    <h6>{{ product.subcategory || 'None' }}</h6>
-                  </li>
-                  <li>
-                    <h4>Brand</h4>
-                    <h6>{{ product.brand }}</h6>
-                  </li>
-                  <li>
-                    <h4>Unit</h4>
-                    <h6>{{ product.unit }}</h6>
-                  </li>
-                  <li>
-                    <h4>SKU</h4>
-                    <h6>{{ product.sku }}</h6>
-                  </li>
-                  <li>
-                    <h4>Minimum Qty</h4>
+                    <h4>Quantity Alert</h4>
                     <h6>{{ product.quantityAlert }}</h6>
                   </li>
                   <li>
                     <h4>Quantity</h4>
                     <h6>{{ product.quantity }}</h6>
-                  </li>
-                  <li>
-                    <h4>Discount Type</h4>
-                    <h6>{{ product.discountType }}</h6>
                   </li>
                   <li>
                     <h4>Price</h4>
@@ -62,10 +39,6 @@
                   <li>
                     <h4>Cost</h4>
                     <h6>{{ product.cost }}</h6>
-                  </li>
-                  <li>
-                    <h4>Sales</h4>
-                    <h6>{{ product.sales }}</h6>
                   </li>
                   <li>
                     <h4>Returns</h4>

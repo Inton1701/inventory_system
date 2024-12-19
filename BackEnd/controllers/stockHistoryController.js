@@ -19,9 +19,9 @@ const history = {
 
     // Add new stock history
     addHistory: asyncHandler(async (req, res) => {
-        const { sku, product, prevStock, changes, newStock } = req.body;
+        const {  product, prevStock, changes, newStock } = req.body;
 
-        if (!sku || !product || !prevStock || !changes || !newStock) {
+        if (!product || !prevStock || !changes || !newStock) {
             return res.status(400).json({ success: false, message: "Please fill out all required fields." });
         }
 

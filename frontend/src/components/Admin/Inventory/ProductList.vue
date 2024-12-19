@@ -11,15 +11,14 @@
           </div>
         </div>
         <ul class="table-top-head">
-          <li>
+          <li class="bg-success">
             <a
               data-bs-toggle="tooltip"
               data-bs-placement="top"
               title="Pdf"
               type="button"
               @click="exportPDFAlert()"
-              ><img src="/assets/img/icons/pdf.svg" alt="img"
-            /></a>
+             >Export to PDF</a>
           </li>
           <li>
             <a
@@ -31,24 +30,7 @@
               ><img src="/assets/img/icons/excel.svg" alt="img"
             /></a>
           </li>
-          <li>
-            <router-link
-              to="/products"
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Refresh"
-              ><i data-feather="rotate-ccw" class="feather-rotate-ccw"></i
-            ></router-link>
-          </li>
-          <li>
-            <a
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Collapse"
-              id="collapse-header"
-              ><i data-feather="chevron-up" class="feather-chevron-up"></i
-            ></a>
-          </li>
+
         </ul>
         <div class="page-btn">
           <router-link to="create-product" class="btn btn-added"
@@ -56,15 +38,7 @@
             Product</router-link
           >
         </div>
-        <div class="page-btn import">
-          <a
-            href="#"
-            class="btn btn-added color"
-            data-bs-toggle="modal"
-            data-bs-target="#view-notes"
-            ><i data-feather="download" class="me-2"></i>Import Product</a
-          >
-        </div>
+
       </div>
       <div class="card table-list-card">
         <div class="card-body">
@@ -75,6 +49,7 @@
                 <tr>
                   <th>Product</th>
                   <th>Price</th>
+                  <th>Category</th>
                   <th>Created On</th>
                   <th>Updated On</th>
                   <th class="no-sort">Action</th>
@@ -102,6 +77,7 @@
                     </div>
                   </td>
                   <td>{{ product.price.toFixed(2) }}</td>
+                  <td>{{ product.category }}</td>
                   <td>{{ $formatDate(product.createdAt) }}</td>
                   <td>{{ $formatDate(product.updatedAt) }}</td>
                   <td class="action-table-data">

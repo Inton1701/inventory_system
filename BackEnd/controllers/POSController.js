@@ -134,7 +134,6 @@ const POSController = {
             res.status(200).json({
                 success: true,
                 transactionId: transaction.transactionId,
-                sku: transaction.sku,
                 cart: transaction.cart,
                 totalAmount: transaction.totalAmount,
             });

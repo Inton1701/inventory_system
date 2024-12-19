@@ -15,7 +15,7 @@ function formatDate(date) {
 }
 
 // Function to export data to PDF
-export function exportToPDF(header, products, filenamePrefix = 'PosExpress') {
+export function exportToPDF(header, products, filenamePrefix = 'Product-List') {
   if (!products || products.length === 0) {
     console.error('No products to export');
     return;
