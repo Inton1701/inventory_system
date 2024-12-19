@@ -12,6 +12,7 @@
       <form @submit.prevent="editProduct">
         <div class="card">
           <div class="card-body add-product pb-0">
+            <!-- Product Information Section -->
             <div class="accordion-card-one accordion" id="accordionExample">
               <div class="accordion-item">
                 <div class="accordion-header" id="headingOne">
@@ -23,8 +24,11 @@
                   >
                     <div class="addproduct-icon">
                       <h5>
-                        <i data-feather="info" class="add-info"></i
-                        ><span>Product Information</span>
+                        <font-awesome-icon
+                          :icon="['fas', 'wheat-awn']"
+                          style="padding-right: 2vw; color: green"
+                        />
+                        <span>Product Information</span>
                       </h5>
                     </div>
                   </div>
@@ -46,36 +50,27 @@
                             placeholder="Product name here."
                             :maxlength="35"
                             v-model="inputedProduct.name"
-                            @input="
-                              productName = filterTextInput($event.target.value)
-                            "
                             required
                           />
                           <p class="mt-1">Maximum of 35 Characters</p>
                         </div>
                       </div>
-                    </div>
-                    <div class="addservice-info">
-                      <div class="row">
-                        <div class="col-lg-4 col-sm-6 col-12">
-                          <div class="mb-3 add-product">
-                            <div class="add-newplus">
-                              <label class="form-label">Category</label>
-                            </div>
-                            <select
-                              class="form-control"
-                              v-model="inputedProduct.category"
+                      <div class="col-lg-5 col-sm-6 col-12">
+                        <div class="mb-3 add-product">
+                          <label class="form-label">Category</label>
+                          <select
+                            class="form-control"
+                            v-model="inputedProduct.category"
+                          >
+                            <option value="None">None</option>
+                            <option
+                              v-for="category in categories"
+                              :key="category._id"
+                              :value="category.name"
                             >
-                              <option value="None">None</option>
-                              <option
-                                v-for="category in categories"
-                                :key="category._id"
-                                :value="category.name"
-                              >
-                                {{ category.name }}
-                              </option>
-                            </select>
-                          </div>
+                              {{ category.name }}
+                            </option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -90,11 +85,6 @@
                           placeholder="Please type here the description"
                           :maxlength="150"
                           v-model="inputedProduct.description"
-                          @input="
-                            productDescription = filterTextInput(
-                              $event.target.value
-                            )
-                          "
                         ></textarea>
                         <p class="mt-1">Maximum of 150 Characters</p>
                       </div>
@@ -117,9 +107,15 @@
                     <div class="text-editor add-list">
                       <div class="addproduct-icon list icon">
                         <h5>
-                          <i data-feather="life-buoy" class="add-info"></i
-                          ><span>Product Pricing</span>
+                          <i data-feather="life-buoy" class="add-info"></i>
+                          <span>Product Pricing</span>
                         </h5>
+                        <a href="javascript:void(0);">
+                          <i
+                            data-feather="chevron-down"
+                            class="chevron-down-add"
+                          ></i>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -165,42 +161,48 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            id="collapseThree"
-            class="accordion-collapse collapse show"
-            aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample3"
-          >
-            <div class="accordion-body">
-              <div class="text-editor add-list add">
-                <div class="col-lg-12">
-                  <div class="add-choosen">
-                    <div class="input-blocks">
-                      <div class="image-upload">
-                        <input type="file" @change="onFileChange" />
-                        <div
-                          class="image-uploads"
-                          v-if="
-                            !inputedProduct.image.url && !inputedProduct.url
-                          "
-                        >
-                          <i data-feather="plus-circle"></i>
-                          <h4>Edit Images</h4>
-                        </div>
+
+            <!-- Image Section -->
+            <div class="accordion-card-one accordion" id="accordionExample3">
+              <div class="accordion-item">
+                <div class="accordion-header" id="headingThree">
+                  <div
+                    class="accordion-button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-controls="collapseThree"
+                  >
+                    <div class="text-editor add-list">
+                      <div class="addproduct-icon list icon">
+                        <h5>
+                          <i data-feather="image" class="add-info"></i>
+                          <span>Product Image</span>
+                        </h5>
                       </div>
                     </div>
-                    <div
-                      class="phone-img"
-                      v-if="inputedProduct.image.url || inputedProduct.url"
-                    >
+                  </div>
+                </div>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample3"
+                >
+                  <div class="accordion-body">
+                    <div class="image-upload">
+                      <input type="file" @change="onFileChange" />
+                      <div
+                        v-if="!inputedProduct.image.url"
+                        class="image-uploads"
+                      >
+                        <i data-feather="plus-circle"></i>
+                        <h4>Add Images</h4>
+                      </div>
+                    </div>
+                    <div v-if="inputedProduct.image.url" class="phone-img">
                       <img
-                        :src="
-                          inputedProduct.image.url
-                            ? inputedProduct.image.url
-                            : inputedProduct.url
-                        "
-                        alt="Product Image"
+                        :src="inputedProduct.image.url"
+                        alt="Uploaded image"
                       />
                       <a href="javascript:void(0);" @click="removeImage">
                         <i
@@ -215,11 +217,11 @@
             </div>
           </div>
           <!-- Save Buttons -->
-        </div>
-        <div class="col-lg-12">
-          <div class="btn-addproduct mb-4">
-            <button type="button" class="btn btn-cancel me-2">Cancel</button>
-            <button type="submit" class="btn btn-submit">Save Product</button>
+          <div class="col-lg-12">
+            <div class="btn-addproduct mb-4">
+              <button type="button" class="btn btn-cancel me-2">Cancel</button>
+              <button type="submit" class="btn btn-submit">Save Product</button>
+            </div>
           </div>
         </div>
       </form>
