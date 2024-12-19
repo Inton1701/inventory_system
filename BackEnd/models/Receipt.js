@@ -7,7 +7,7 @@ const receiptSchema = new mongoose.Schema({
   },
   storeName:{
     type: String,
-    default:'POSExpress',
+    default:'GULAY-FARM',
     required: true,
   },
   storeAdress:{

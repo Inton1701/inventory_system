@@ -382,7 +382,7 @@ export default {
     // Methods
     const getCategories = async () => {
       try {
-        if (await checkState()) return;
+        
         const response = await axios.get(`${apiURL}/get_category_list`);
         categories.value = [{ name: 'All' }, ...response.data.categories]; // Add "All" category
       } catch (error) {
@@ -392,7 +392,7 @@ export default {
 
     const getProductsByCategory = async (categoryName) => {
       try {
-        if (await checkState()) return;
+        
         const response = await axios.get(`${apiURL}/get_products_by_category/${categoryName}`);
         products.value = response.data.products;
       } catch (error) {
@@ -412,7 +412,7 @@ export default {
 
     const getAllProducts = async () => {
       try {
-        if (await checkState()) return;
+        
         const response = await axios.get(`${apiURL}/products_list`);
         products.value = response.data.products;
       } catch (error) {
@@ -430,7 +430,7 @@ export default {
 
     const addProduct = async (product = null) => {
       try {
-        if (await checkState()) return;
+        
 
         if (isNewTransaction.value) {
           cart.value = []; // Clear the cart
@@ -570,7 +570,7 @@ export default {
     }
 
     const openPaymentModal = async () => {
-      if (await checkState()) return;
+      
       if (total.value > 0) {
         resetTransactions();
         modalController.show('payment-modal');
@@ -580,7 +580,7 @@ export default {
     };
 
     const openReturnModal = async () => {
-      if (await checkState()) return;
+      
       resetTransactions();
       modalController.show('return-modal');
       modalController.focus('return-modal');
@@ -595,7 +595,7 @@ export default {
     };
 
     const openVoidModal = async () => {
-      if (await checkState()) return;
+      
       resetTransactions();
       modalController.show('void-transaction-modal');
       modalController.focus('void-transaction-modal');
@@ -604,7 +604,7 @@ export default {
 
 
     const handleModalKeydown = async (event) => {
-      if (await checkState()) return;
+      
       // Check for Enter key
       if (event.key === 'Enter') {
         event.preventDefault(); // Prevent default form submission
@@ -698,7 +698,7 @@ export default {
 
     const processVoid = async () => {
       try {
-        if (await checkState()) return;
+        
         const response = await axios.post(`${apiURL}/void_transaction`, {
           transactionId: transactionId.value,
           employee: 'JohnDoe' // Replace with actual employee information
@@ -743,7 +743,7 @@ export default {
 
 
     const updateProductQuantity = async () => {
-      if (await checkState()) return;
+      
       if (lastAddedProduct.value) {
         if (newQuantity.value > stockQuantity.value) {
           quantityError.value = `Stock quantity is only ${stockQuantity.value}. Please enter a valid quantity.`;
@@ -803,7 +803,7 @@ export default {
 
     const processReturn = async () => {
       try {
-        if (await checkState()) return;
+        
         const itemsToReturn = returnItems.value.filter(item => item.selected && item.returnQuantity > 0);
 
         if (itemsToReturn.length === 0) {
@@ -980,7 +980,7 @@ export default {
 
     // Open the edit cart modal
     const openEditCartModal = async () => {
-      if (await checkState()) return;
+      
       if (cart.value.length > 0) {
         focusedCartIndex.value = 0; // Reset focus to the first item
         modalController.show("edit-cart-modal");

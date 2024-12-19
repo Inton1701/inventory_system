@@ -21,7 +21,7 @@ const wrapText = (text, width) => {
 
 // Default receipt settings
 const getDefaultReceiptSettings = () => ({
-    storeName: 'POSExpress',
+    storeName: 'GULAY-FARM',
     storeAddress: 'Default Store Address',
     storeSecondAddress: '',
     contact: '',
@@ -34,7 +34,7 @@ const printReceipt = async (transaction, type = "normal", isTest = false) => {
         receiptSettings = getDefaultReceiptSettings();
     } else {
         receiptSettings = {
-            storeName: receiptSettings.storeName || 'POSExpress',
+            storeName: receiptSettings.storeName || 'GULAY-FARM',
             storeAddress: receiptSettings.storeAddress || 'Default Store Address',
             storeSecondAddress: receiptSettings.storeSecondAddress || '',
             contact: receiptSettings.contact || '',
