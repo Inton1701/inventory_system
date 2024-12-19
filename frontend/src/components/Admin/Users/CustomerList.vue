@@ -1,7 +1,7 @@
 <template>
-<Navbar/>
-<Sidebar/>
-<div class="page-wrapper">
+  <Navbar />
+  <Sidebar />
+  <div class="page-wrapper">
     <div class="content">
       <div class="page-header">
         <div class="add-item d-flex">
@@ -17,26 +17,17 @@
             /></a>
           </li>
           <li>
-            <a
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Excel"
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"
               ><img src="assets/img/icons/excel.svg" alt="img"
             /></a>
           </li>
           <li>
-            <a
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Print"
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"
               ><i data-feather="printer" class="feather-rotate-ccw"></i
             ></a>
           </li>
           <li>
-            <a
-              data-bs-toggle="tooltip"
-              data-bs-placement="top"
-              title="Refresh"
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Refresh"
               ><i data-feather="rotate-ccw" class="feather-rotate-ccw"></i
             ></a>
           </li>
@@ -56,8 +47,7 @@
             class="btn btn-added"
             data-bs-toggle="modal"
             data-bs-target="#add-units"
-            ><i data-feather="plus-circle" class="me-2"></i>Add New
-            Customer</a
+            ><i data-feather="plus-circle" class="me-2"></i>Add New Customer</a
           >
         </div>
       </div>
@@ -159,10 +149,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-23.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-23.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Thomas</a>
                     </div>
@@ -192,14 +179,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -214,10 +195,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-15.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-15.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Rose</a>
                     </div>
@@ -247,14 +225,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -269,10 +241,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-16.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-16.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Benjamin</a>
                     </div>
@@ -302,14 +271,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -324,10 +287,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-17.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-17.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Kaitlin</a>
                     </div>
@@ -357,14 +317,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -379,10 +333,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-18.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-18.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Lilly</a>
                     </div>
@@ -412,14 +363,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -434,10 +379,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-19.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-19.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Freda</a>
                     </div>
@@ -467,14 +409,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -523,14 +459,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -545,10 +475,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-06.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-06.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Maybelle</a>
                     </div>
@@ -578,14 +505,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -600,10 +521,7 @@
                   <td>
                     <div class="userimgname cust-imgname">
                       <a href="javascript:void(0);" class="product-img">
-                        <img
-                          src="assets/img/users/user-10.jpg"
-                          alt="product"
-                        />
+                        <img src="assets/img/users/user-10.jpg" alt="product" />
                       </a>
                       <a href="javascript:void(0);">Ellen</a>
                     </div>
@@ -633,14 +551,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -689,14 +601,8 @@
                       >
                         <i data-feather="edit" class="feather-edit"></i>
                       </a>
-                      <a
-                        class="confirm-text p-2"
-                        href="javascript:void(0);"
-                      >
-                        <i
-                          data-feather="trash-2"
-                          class="feather-trash-2"
-                        ></i>
+                      <a class="confirm-text p-2" href="javascript:void(0);">
+                        <i data-feather="trash-2" class="feather-trash-2"></i>
                       </a>
                     </div>
                   </td>
@@ -709,265 +615,258 @@
     </div>
   </div>
 
-
-<div class="modal fade" id="add-units">
-  <div class="modal-dialog modal-dialog-centered custom-modal-two">
-    <div class="modal-content">
-      <div class="page-wrapper-new p-0">
-        <div class="content">
-          <div class="modal-header border-0 custom-modal-header">
-            <div class="page-title">
-              <h4>Add Customer</h4>
-            </div>
-            <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body custom-modal-body">
-            <form action="customers.html">
-              <div class="modal-title-head people-cust-avatar">
-                <h6>Avatar</h6>
+  <div class="modal fade" id="add-units">
+    <div class="modal-dialog modal-dialog-centered custom-modal-two">
+      <div class="modal-content">
+        <div class="page-wrapper-new p-0">
+          <div class="content">
+            <div class="modal-header border-0 custom-modal-header">
+              <div class="page-title">
+                <h4>Add Customer</h4>
               </div>
-              <div class="new-employee-field">
-                <div class="profile-pic-upload">
-                  <div class="profile-pic">
-                    <span
-                      ><i
-                        data-feather="plus-circle"
-                        class="plus-down-add"
-                      ></i>
-                      Add Image</span
-                    >
-                  </div>
-                  <div class="mb-3">
-                    <div class="image-upload mb-0">
-                      <input type="file" />
-                      <div class="image-uploads">
-                        <h4>Change Image</h4>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body custom-modal-body">
+              <form action="customers.html">
+                <div class="modal-title-head people-cust-avatar">
+                  <h6>Avatar</h6>
+                </div>
+                <div class="new-employee-field">
+                  <div class="profile-pic-upload">
+                    <div class="profile-pic">
+                      <span
+                        ><i
+                          data-feather="plus-circle"
+                          class="plus-down-add"
+                        ></i>
+                        Add Image</span
+                      >
+                    </div>
+                    <div class="mb-3">
+                      <div class="image-upload mb-0">
+                        <input type="file" />
+                        <div class="image-uploads">
+                          <h4>Change Image</h4>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Customer Name</label>
-                    <input type="text" class="form-control" />
+                <div class="row">
+                  <div class="col-lg-4 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Customer Name</label>
+                      <input type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 pe-0">
+                    <div class="input-blocks">
+                      <label class="mb-2">Phone</label>
+                      <input
+                        class="form-control form-control-lg group_formcontrol"
+                        id="phone"
+                        name="phone"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Address</label>
+                      <input type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">City</label>
+                      <input type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Country</label>
+                      <select class="select">
+                        <option>Choose</option>
+                        <option>United Kingdom</option>
+                        <option>United State</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-3 input-blocks">
+                      <label class="form-label">Descriptions</label>
+                      <textarea class="form-control mb-1"></textarea>
+                      <p>Maximum 60 Characters</p>
+                    </div>
                   </div>
                 </div>
-                <div class="col-lg-4 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" />
-                  </div>
+                <div class="modal-footer-btn">
+                  <button
+                    type="button"
+                    class="btn btn-cancel me-2"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-submit">Submit</button>
                 </div>
-                <div class="col-lg-4 pe-0">
-                  <div class="input-blocks">
-                    <label class="mb-2">Phone</label>
-                    <input
-                      class="form-control form-control-lg group_formcontrol"
-                      id="phone"
-                      name="phone"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div class="col-lg-12 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Address</label>
-                    <input type="text" class="form-control" />
-                  </div>
-                </div>
-                <div class="col-lg-6 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">City</label>
-                    <input type="text" class="form-control" />
-                  </div>
-                </div>
-                <div class="col-lg-6 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Country</label>
-                    <select class="select">
-                      <option>Choose</option>
-                      <option>United Kingdom</option>
-                      <option>United State</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="mb-3 input-blocks">
-                    <label class="form-label">Descriptions</label>
-                    <textarea class="form-control mb-1"></textarea>
-                    <p>Maximum 60 Characters</p>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer-btn">
-                <button
-                  type="button"
-                  class="btn btn-cancel me-2"
-                  data-bs-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button type="submit" class="btn btn-submit">Submit</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="edit-units">
-  <div class="modal-dialog modal-dialog-centered custom-modal-two">
-    <div class="modal-content">
-      <div class="page-wrapper-new p-0">
-        <div class="content">
-          <div class="modal-header border-0 custom-modal-header">
-            <div class="page-title">
-              <h4>Edit Customer</h4>
-            </div>
-            <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body custom-modal-body">
-            <form action="customers.html">
-              <div class="modal-title-head people-cust-avatar">
-                <h6>Avatar</h6>
+  <div class="modal fade" id="edit-units">
+    <div class="modal-dialog modal-dialog-centered custom-modal-two">
+      <div class="modal-content">
+        <div class="page-wrapper-new p-0">
+          <div class="content">
+            <div class="modal-header border-0 custom-modal-header">
+              <div class="page-title">
+                <h4>Edit Customer</h4>
               </div>
-              <div class="new-employee-field">
-                <div class="profile-pic-upload">
-                  <div class="profile-pic people-profile-pic">
-                    <img src="assets/img/profiles/profile.png" alt="Img" />
-                    <a href="#"
-                      ><i data-feather="x-square" class="x-square-add"></i
-                    ></a>
-                  </div>
-                  <div class="mb-3">
-                    <div class="image-upload mb-0">
-                      <input type="file" />
-                      <div class="image-uploads">
-                        <h4>Change Image</h4>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body custom-modal-body">
+              <form action="customers.html">
+                <div class="modal-title-head people-cust-avatar">
+                  <h6>Avatar</h6>
+                </div>
+                <div class="new-employee-field">
+                  <div class="profile-pic-upload">
+                    <div class="profile-pic people-profile-pic">
+                      <img src="assets/img/profiles/profile.png" alt="Img" />
+                      <a href="#"
+                        ><i data-feather="x-square" class="x-square-add"></i
+                      ></a>
+                    </div>
+                    <div class="mb-3">
+                      <div class="image-upload mb-0">
+                        <input type="file" />
+                        <div class="image-uploads">
+                          <h4>Change Image</h4>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-4 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Customer Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="Thomas"
-                    />
+                <div class="row">
+                  <div class="col-lg-4 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Customer Name</label>
+                      <input type="text" class="form-control" value="Thomas" />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        value="thomas@example.com"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 pe-0">
+                    <div class="input-blocks">
+                      <label class="mb-2">Phone</label>
+                      <input
+                        class="form-control form-control-lg group_formcontrol"
+                        id="phone2"
+                        name="phone2"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-12 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="Budapester Strasse 2027259 "
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">City</label>
+                      <select class="select">
+                        <option>Varrel</option>
+                        <option>Varrel</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 pe-0">
+                    <div class="mb-3">
+                      <label class="form-label">Country</label>
+                      <select class="select">
+                        <option>Germany</option>
+                        <option>United State</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-0 input-blocks">
+                      <label class="form-label">Descriptions</label>
+                      <textarea class="form-control mb-1"></textarea>
+                      <p>Maximum 60 Characters</p>
+                    </div>
                   </div>
                 </div>
-                <div class="col-lg-4 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      value="thomas@example.com"
-                    />
-                  </div>
+                <div class="modal-footer-btn">
+                  <button
+                    type="button"
+                    class="btn btn-cancel me-2"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-submit">
+                    Save Changes
+                  </button>
                 </div>
-                <div class="col-lg-4 pe-0">
-                  <div class="input-blocks">
-                    <label class="mb-2">Phone</label>
-                    <input
-                      class="form-control form-control-lg group_formcontrol"
-                      id="phone2"
-                      name="phone2"
-                      type="text"
-                    />
-                  </div>
-                </div>
-                <div class="col-lg-12 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Address</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      value="Budapester Strasse 2027259 "
-                    />
-                  </div>
-                </div>
-                <div class="col-lg-6 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">City</label>
-                    <select class="select">
-                      <option>Varrel</option>
-                      <option>Varrel</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6 pe-0">
-                  <div class="mb-3">
-                    <label class="form-label">Country</label>
-                    <select class="select">
-                      <option>Germany</option>
-                      <option>United State</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="mb-0 input-blocks">
-                    <label class="form-label">Descriptions</label>
-                    <textarea class="form-control mb-1"></textarea>
-                    <p>Maximum 60 Characters</p>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer-btn">
-                <button
-                  type="button"
-                  class="btn btn-cancel me-2"
-                  data-bs-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button type="submit" class="btn btn-submit">
-                  Save Changes
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 <script>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from "vue";
 
-import 'select2'; 
-import feather from 'feather-icons';
-import ClipLoader from 'vue-spinner/src/ClipLoader.vue';
-import 'datatables.net-bs5'
-import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
-import Swal from 'sweetalert2';
+import "select2";
+import feather from "feather-icons";
+import ClipLoader from "vue-spinner/src/ClipLoader.vue";
+import "datatables.net-bs5";
+import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+import Swal from "sweetalert2";
 
-
-import Navbar from '/src/components/Admin/Navbar.vue';
-
+import Navbar from "/src/components/Admin/Navbar.vue";
 
 export default {
   components: {
@@ -977,132 +876,128 @@ export default {
   data() {
     return {
       jsonData: null,
-    }
+    };
   },
-//   setup() {
-//     const products = ref([]); 
-//     const loading = ref(true);
-//     const select = ref(null); 
-//     const table = ref(null);
-  
+  //   setup() {
+  //     const products = ref([]);
+  //     const loading = ref(true);
+  //     const select = ref(null);
+  //     const table = ref(null);
 
-//     const getProductList = async () => {
-//       loading.value = true; // Start loading
-//       try {
-//         // Assign prodList to products
-//         products.value = prodList; 
-//         console.log(products.value); // Log to check if products are correctly assigned
-//       } catch (error) {
-//         console.error(error);
-//       } finally {
-//         loading.value = false; // Set loading to false after the operation
-//       }
-//     };
+  //     const getProductList = async () => {
+  //       loading.value = true; // Start loading
+  //       try {
+  //         // Assign prodList to products
+  //         products.value = prodList;
+  //         console.log(products.value); // Log to check if products are correctly assigned
+  //       } catch (error) {
+  //         console.error(error);
+  //       } finally {
+  //         loading.value = false; // Set loading to false after the operation
+  //       }
+  //     };
 
-//     onMounted(async () => {
-//       try{
-//        await getProductList();
-//        await $(select.value).select2(); 
-//        await feather.replace(); 
-//        await $('.table').DataTable();
-//       }catch (error) {
-//         console.log(error);
-//       }
-//     });
+  //     onMounted(async () => {
+  //       try{
+  //        await getProductList();
+  //        await $(select.value).select2();
+  //        await feather.replace();
+  //        await $('.table').DataTable();
+  //       }catch (error) {
+  //         console.log(error);
+  //       }
+  //     });
 
-//     onBeforeUnmount(() => {
-//       $(select.value).select2('destroy'); // Clean up Select2 instance
-//     });
+  //     onBeforeUnmount(() => {
+  //       $(select.value).select2('destroy'); // Clean up Select2 instance
+  //     });
 
-//     return {
-//       products,
-//       loading,
-//       select,
-   
-  
-//     };
-//   },
-//   methods: {
-//     async deleteAlert() {
-//       const { value: result } = await Swal.fire({
-//         title: 'Delete Products',
-//         text: 'You won\'t be able to revert this!',
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//         cancelButtonColor: '#d33',
-//         confirmButtonText: 'Yes, delete it!'
-//       });
+  //     return {
+  //       products,
+  //       loading,
+  //       select,
 
-//       if (result) {
-//         Swal.fire(
-//           'Deleted!',
-//           'Your file has been deleted.',
-//           'success'
-//         );
-//       } else {
-//         Swal.fire(
-//           'Cancelled',
-//           'Your file is safe :)',
-//           'error'
-//         );
-//       }
-//     },
-//     async exportCSVAlert() {
-//     console.log("Export alert triggered", this.products); // Debug: Check the content of products
-//     const result = await this.$showAlert({
-//       title: 'Export Products',
-//       text: 'Do you want to export products to CSV?',
-//       icon: 'question',
-//       showCancelButton: true,
-//       confirmButtonColor: '#3085d6',
-//       cancelButtonColor: '#d33',
-//       confirmButtonText: 'Export'
-//     });
+  //     };
+  //   },
+  //   methods: {
+  //     async deleteAlert() {
+  //       const { value: result } = await Swal.fire({
+  //         title: 'Delete Products',
+  //         text: 'You won\'t be able to revert this!',
+  //         icon: 'warning',
+  //         showCancelButton: true,
+  //         confirmButtonColor: '#3085d6',
+  //         cancelButtonColor: '#d33',
+  //         confirmButtonText: 'Yes, delete it!'
+  //       });
 
-//     if (result.isConfirmed) {
-//       console.log("Export confirmed, data:", this.products); // Debug: Check data before exporting
-//       await this.$exportToCSV(this.products, 'products');
-//     }
-//    },
-//     async exportPDFAlert() {
-//     console.log("Export alert triggered", this.products); // Debug: Check the content of products
-//     const result = await this.$showAlert({
-//       title: 'Export Products',
-//       text: 'Do you want to export products to PDF?',
-//       icon: 'question',
-//       showCancelButton: true,
-//       confirmButtonColor: '#3085d6',
-//       cancelButtonColor: '#d33',
-//       confirmButtonText: 'Export'
-//     });
+  //       if (result) {
+  //         Swal.fire(
+  //           'Deleted!',
+  //           'Your file has been deleted.',
+  //           'success'
+  //         );
+  //       } else {
+  //         Swal.fire(
+  //           'Cancelled',
+  //           'Your file is safe :)',
+  //           'error'
+  //         );
+  //       }
+  //     },
+  //     async exportCSVAlert() {
+  //     console.log("Export alert triggered", this.products); // Debug: Check the content of products
+  //     const result = await this.$showAlert({
+  //       title: 'Export Products',
+  //       text: 'Do you want to export products to CSV?',
+  //       icon: 'question',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#3085d6',
+  //       cancelButtonColor: '#d33',
+  //       confirmButtonText: 'Export'
+  //     });
 
-//     if (result.isConfirmed) {
-//       console.log("Export confirmed, data:", this.products); // Debug: Check data before exporting
-//       await this.$exportToPDF('Product List',this.products, 'products');
-//     }
-//    },
-//    async uploadCSV(event){
-//     const file = event.target.files[0];
-//     if(file){
-//       try{
-//         this.jsonData = await this.$csvToJson(file);
-//         console.log("CSV data:", this.jsonData); // Debug: Check the content of CSV data
-//       }catch(error){
-//         console.error(error);
-//       }
-//     }
-//    },
-//    async printJSON(){
-//     if(this.jsonData !== null){
-//       console.log("JSON data:", this.jsonData); // Fo test
-//     }else{
-//       console.log("No JSON data available"); 
-//     }
-   
-//    } 
-// }
- 
+  //     if (result.isConfirmed) {
+  //       console.log("Export confirmed, data:", this.products); // Debug: Check data before exporting
+  //       await this.$exportToCSV(this.products, 'products');
+  //     }
+  //    },
+  //     async exportPDFAlert() {
+  //     console.log("Export alert triggered", this.products); // Debug: Check the content of products
+  //     const result = await this.$showAlert({
+  //       title: 'Export Products',
+  //       text: 'Do you want to export products to PDF?',
+  //       icon: 'question',
+  //       showCancelButton: true,
+  //       confirmButtonColor: '#3085d6',
+  //       cancelButtonColor: '#d33',
+  //       confirmButtonText: 'Export'
+  //     });
+
+  //     if (result.isConfirmed) {
+  //       console.log("Export confirmed, data:", this.products); // Debug: Check data before exporting
+  //       await this.$exportToPDF('Product List',this.products, 'products');
+  //     }
+  //    },
+  //    async uploadCSV(event){
+  //     const file = event.target.files[0];
+  //     if(file){
+  //       try{
+  //         this.jsonData = await this.$csvToJson(file);
+  //         console.log("CSV data:", this.jsonData); // Debug: Check the content of CSV data
+  //       }catch(error){
+  //         console.error(error);
+  //       }
+  //     }
+  //    },
+  //    async printJSON(){
+  //     if(this.jsonData !== null){
+  //       console.log("JSON data:", this.jsonData); // Fo test
+  //     }else{
+  //       console.log("No JSON data available");
+  //     }
+
+  //    }
+  // }
 };
-
 </script>
