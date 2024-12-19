@@ -3,14 +3,6 @@
   <Sidebar />
   <div class="page-wrapper">
     <div class="content">
-      <div class="page-header">
-        <div class="add-item d-flex">
-          <div class="page-title">
-            <h4>Voided Transaction List</h4>
-            <h6>Manage Your Voided Transaction</h6>
-          </div>
-        </div>
-      </div>
       <div class="card table-list-card">
         <div class="card-body">
           <div class="table-responsive">
@@ -18,12 +10,10 @@
             <table v-else class="table datanew" id="transaction-table">
               <thead>
                 <tr>
-                  <th>Customer</th>
                   <th class="text-start">Reference</th>
                   <th>Date</th>
                   <th>Status</th>
                   <th class="text-start">Total</th>
-                  <th>Payment Method</th>
                   <th>Biller</th>
                   <th class="text-center">Action</th>
                 </tr>
@@ -33,7 +23,6 @@
                   <td colspan="8">No products available</td>
                 </tr>
                 <tr v-else v-for="trans in transactions" :key="trans.id">
-                  <td>Walk in</td>
                   <td class="text-start">{{ trans.transactionId }}</td>
                   <td>{{ $formatDate(trans.createdAt) }}</td>
 
@@ -50,11 +39,7 @@
                     </span>
                   </td>
                   <td class="text-start">{{ trans.totalAmount }}</td>
-                  <td>
-                    <span class="badge badge-linesuccess">{{
-                      trans.paymentMethod
-                    }}</span>
-                  </td>
+
                   <td>{{ trans.employee }}</td>
                   <td class="text-center">
                     <a
@@ -112,7 +97,6 @@
       </div>
     </div>
   </div>
-
   <!-- Sale Detail Modal -->
   <div
     class="modal fade"
@@ -143,9 +127,6 @@
               <strong>Cashier:</strong> {{ selectedTransaction.employee }}
             </h6>
             <h6 class="mb-2">
-              <strong>Customer:</strong> {{ selectedTransaction.customer }}
-            </h6>
-            <h6 class="mb-2">
               <strong>Status:</strong>
               <span :class="getStatusClass(selectedTransaction.status)">{{
                 selectedTransaction.status
@@ -159,10 +140,6 @@
                 selectedTransaction.totalAmount
               }}
             </h6>
-            <h6 class="mb-2">
-              <strong>Payment Method:</strong>
-              {{ selectedTransaction.paymentMethod }}
-            </h6>
           </div>
 
           <!-- Products Table -->
@@ -171,7 +148,6 @@
             <thead>
               <tr>
                 <th>Product Name</th>
-                <th>SKU</th>
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Total</th>
@@ -183,7 +159,6 @@
                 :key="product._id"
               >
                 <td>{{ product.name }}</td>
-                <td>{{ product.sku }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.quantity * product.price }}</td>
@@ -271,7 +246,6 @@ export default {
       }
     };
 
-    // Get transaction details by ID
     const getTransactionDetails = async (transactionId) => {
       loading.value = true;
       try {

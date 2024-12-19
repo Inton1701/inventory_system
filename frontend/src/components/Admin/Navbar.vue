@@ -55,29 +55,54 @@
             <li class="submenu-open">
               <h6 class="submenu-hdr">Main</h6>
               <ul>
-                <ul>
-                  <li>
-                    <router-link to="/dashboard"><i data-feather="grid"></i><span>Admin Dashboard</span></router-link>
-                  </li>
-                </ul>
+                <li>
+                  <router-link
+                    to="/dashboard"
+                    :class="{ 'active-link': $route.path === '/dashboard' }"
+                  >
+                    <i data-feather="grid"></i><span>Admin Dashboard</span>
+                  </router-link>
+                </li>
               </ul>
             </li>
+
             <li class="submenu-open">
               <h6 class="submenu-hdr">Inventory</h6>
               <ul>
                 <li>
-                  <router-link to="/products"><i data-feather="box"></i><span>Products</span></router-link>
+                  <router-link
+                    to="/products"
+                    :class="{ 'active-link': $route.path === '/products' }"
+                  >
+                    <i data-feather="box"></i><span>Products</span>
+                  </router-link>
                 </li>
                 <li>
-                  <router-link to="/create-product"><i data-feather="plus-square"></i><span>Create
-                      Product</span></router-link>
+                  <router-link
+                    to="/create-product"
+                    :class="{
+                      'active-link': $route.path === '/create-product',
+                    }"
+                  >
+                    <i data-feather="plus-square"></i
+                    ><span>Create Product</span>
+                  </router-link>
                 </li>
-
                 <li>
-                  <router-link to="/manage-stocks"><i data-feather="package"></i><span>Manage Stock</span></router-link>
+                  <router-link
+                    to="/manage-stocks"
+                    :class="{ 'active-link': $route.path === '/manage-stocks' }"
+                  >
+                    <i data-feather="package"></i><span>Manage Stock</span>
+                  </router-link>
                 </li>
                 <li>
-                  <router-link to="/category"><i data-feather="codepen"></i><span>Category</span></router-link>
+                  <router-link
+                    to="/category"
+                    :class="{ 'active-link': $route.path === '/category' }"
+                  >
+                    <i data-feather="codepen"></i><span>Category</span>
+                  </router-link>
                 </li>
               </ul>           
             </li>
@@ -85,40 +110,64 @@
               <h6 class="submenu-hdr">Sales</h6>
               <ul>
                 <li>
-                  <router-link to="transactions"><i data-feather="file-text"></i><span>Transactions</span></router-link>
+                  <router-link
+                    to="transactions"
+                    :class="{ 'active-link': $route.path === '/transactions' }"
+                  >
+                    <i data-feather="file-text"></i><span>Transactions</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a href="returns"><i data-feather="copy"></i><span>Sales Return</span></a>
+                  <router-link
+                    to="returns"
+                    :class="{ 'active-link': $route.path === '/returns' }"
+                  >
+                    <i data-feather="copy"></i><span>Sales Return</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a href="voids"><i data-feather="alert-octagon"></i><span>Voids</span></a>
+                  <router-link
+                    to="voids"
+                    :class="{ 'active-link': $route.path === '/voids' }"
+                  >
+                    <i data-feather="alert-octagon"></i><span>Voids</span>
+                  </router-link>
                 </li>
                 <li>
-                  <a href="pos"><i data-feather="hard-drive"></i><span>POS</span></a>
+                  <router-link
+                    to="pos"
+                    :class="{ 'active-link': $route.path === '/pos' }"
+                  >
+                    <i data-feather="hard-drive"></i><span>POS</span>
+                  </router-link>
                 </li>
               </ul>
             </li>
+
             <li class="submenu-open">
               <h6 class="submenu-hdr">Peoples</h6>
               <ul>
                 <li>
-                <li>
+                  <router-link
+                    to="staffs"
+                    :class="{ 'active-link': $route.path === '/staffs' }"
+                  >
+                    <i data-feather="users"></i><span>Staffs</span>
+                  </router-link>
                 </li>
-                <router-link to="staffs">
-                  <i data-feather="users">
-                  </i><span>Staffs</span></router-link>
+              </ul>
             </li>
-          </ul>
+
+            <li class="submenu-open">
+              <h6 class="submenu-hdr">Settings</h6>
+              <ul>
+                <li>
+                  <a href="#" @click="logout">
+                    <i data-feather="log-out"></i><span>Logout</span>
+                  </a>
+                </li>
+              </ul>
             </li>
-          <li class="submenu-open">
-            <h6 class="submenu-hdr">Settings</h6>
-            <ul>
-              <li>
-                <a href="#" @click="logout"><i data-feather="log-out"></i><span>Logout</span>
-                </a>
-              </li>
-            </ul>
-          </li>
           </ul>
         </div>
       </div>
@@ -126,11 +175,13 @@
   </div>
  
 </template>
+
 <script>
 import { ref, onMounted, nextTick } from "vue";
 import feather from "feather-icons";
 import { useRouter } from "vue-router";
 import axios from "axios";
+
 export default {
   name: "Navbar",
   setup() {
@@ -222,8 +273,20 @@ export default {
 <style scoped>
 .sidebar {
   overflow-y: auto;
-  /* Enables vertical scrolling */
   max-height: 100vh;
-  /* Ensures it doesn't exceed the viewport height */
+}
+
+.active-link {
+  background-color: #80bd8e;
+  font-weight: bold;
+  padding: 1rem !important;
+}
+
+.active-link i {
+  color: #fff !important;
+}
+
+.active-link:hover {
+  color: #f5f5f5 !important;
 }
 </style>
