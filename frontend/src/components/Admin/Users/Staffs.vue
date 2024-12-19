@@ -250,7 +250,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="modal-footer-btn">
                   <button
                     type="button"
@@ -344,26 +343,6 @@
                               </a>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="col-5">
-                        <p class="form-label">Set User Status to:</p>
-                        <div
-                          class="status-toggle modal-status d-flex justify-content-between align-items-center"
-                        >
-                          <span>{{ editUser.userStatus }}</span>
-                          <input
-                            type="checkbox"
-                            id="add-category-status"
-                            class="check"
-                            v-model="editUser.userStatus"
-                            :true-value="'Enabled'"
-                            :false-value="'Disabled'"
-                          />
-                          <label
-                            for="add-category-status"
-                            class="checktoggle"
-                          ></label>
                         </div>
                       </div>
                     </div>

@@ -1,19 +1,15 @@
 <template>
-    <Navbar/>
-    <router-view></router-view>
-    
+  <Navbar />
+  <router-view></router-view>
 </template>
 <script>
-import Navbar from '/src/components/Admin/Navbar.vue';
-import Barcode from './Barcode.vue';
+import Navbar from "/src/components/Admin/Navbar.vue";
+import Barcode from "./Barcode.vue";
 
-export default{
-    components: {
-        Navbar,
-        Barcode
-    },
-    
-}
-
-
+export default {
+  components: {
+    Navbar,
+    Barcode,
+  },
+};
 </script>
